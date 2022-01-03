@@ -16,38 +16,48 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CTG-17-H2x">
-                                <rect key="frame" x="114" y="243" width="187" height="189"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cIB-MJ-woz">
+                                <rect key="frame" x="107" y="94" width="200" height="200"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="200" id="Xd4-og-ezC"/>
+                                    <constraint firstAttribute="width" constant="200" id="ikf-Br-uY3"/>
+                                </constraints>
                                 <state key="normal" image="button_play"/>
                                 <state key="selected" image="button_pause"/>
                                 <connections>
-                                    <action selector="touchUpPlayPauseButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="PF8-Il-fIM"/>
+                                    <action selector="touchUpPlayPauseButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="RSj-Hv-eEk"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="00:00:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q9E-5S-ujZ">
-                                <rect key="frame" x="169" y="561" width="76" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pZx-SL-7gM">
+                                <rect key="frame" x="169" y="314" width="76" height="21"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="xH6-mA-nDt">
-                                <rect key="frame" x="44" y="674" width="326" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="TGO-fR-K9W">
+                                <rect key="frame" x="14" y="351" width="386" height="31"/>
                                 <color key="minimumTrackTintColor" systemColor="systemPinkColor"/>
                                 <connections>
-                                    <action selector="sliderValueChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="4jj-Ux-SGh"/>
+                                    <action selector="sliderValueChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="5WT-uD-hPn"/>
                                 </connections>
                             </slider>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="TGO-fR-K9W" firstAttribute="top" secondItem="pZx-SL-7gM" secondAttribute="bottom" constant="16" id="2JJ-3n-0NV"/>
+                            <constraint firstItem="pZx-SL-7gM" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="7D2-ef-IbH"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="TGO-fR-K9W" secondAttribute="trailing" constant="16" id="Gdy-0x-9PL"/>
+                            <constraint firstItem="TGO-fR-K9W" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="Qxm-pP-3ly"/>
+                            <constraint firstItem="pZx-SL-7gM" firstAttribute="top" secondItem="cIB-MJ-woz" secondAttribute="bottom" constant="20" id="W88-yf-y3M"/>
+                            <constraint firstItem="cIB-MJ-woz" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="50" id="XHA-ov-jOO"/>
+                            <constraint firstItem="cIB-MJ-woz" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="vj9-3U-Q5B"/>
+                        </constraints>
                     </view>
                     <connections>
-                        <outlet property="playPauseButton" destination="CTG-17-H2x" id="fCV-XW-Ejr"/>
-                        <outlet property="progressSlider" destination="xH6-mA-nDt" id="KeB-Sd-6oF"/>
-                        <outlet property="timeLabel" destination="Q9E-5S-ujZ" id="tgn-gl-Tmc"/>
+                        <outlet property="playPauseButton" destination="cIB-MJ-woz" id="kgc-Wx-87D"/>
+                        <outlet property="progressSlider" destination="TGO-fR-K9W" id="YjA-nr-3j8"/>
+                        <outlet property="timeLabel" destination="pZx-SL-7gM" id="ztk-yU-5De"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
