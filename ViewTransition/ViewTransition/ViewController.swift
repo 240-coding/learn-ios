@@ -8,6 +8,13 @@
 import UIKit
 
 class ViewController: UIViewController {
+    @IBOutlet weak var nameField: UITextField!
+    @IBOutlet weak var ageField: UITextField!
+    
+    @IBAction func touchUpSetButton(_ sender: UIButton) {
+        UserInformation.shared.name = nameField.text
+        UserInformation.shared.age = ageField.text
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         print("ViewController의 view가 메모리에 로드됨")
