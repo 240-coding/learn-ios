@@ -89,18 +89,18 @@
             <objects>
                 <viewController id="vNW-oF-yqJ" customClass="SecondViewController" customModule="SignUpProject" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ZcI-zN-7v4">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="baV-nb-IWM">
-                                <rect key="frame" x="16" y="20" width="150" height="150"/>
+                            <imageView clipsSubviews="YES" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="baV-nb-IWM">
+                                <rect key="frame" x="16" y="64" width="150" height="150"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="150" id="TJN-Rz-Dpd"/>
                                     <constraint firstAttribute="height" constant="150" id="lwK-r2-idi"/>
                                 </constraints>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="d73-fb-c9M">
-                                <rect key="frame" x="186" y="24" width="212" height="142"/>
+                                <rect key="frame" x="186" y="68" width="212" height="142"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="ID" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="WlP-6a-9iR">
                                         <rect key="frame" x="0.0" y="0.0" width="212" height="34"/>
@@ -120,14 +120,14 @@
                                 </subviews>
                             </stackView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="nH0-SU-4Ub">
-                                <rect key="frame" x="16" y="195" width="382" height="543"/>
+                                <rect key="frame" x="16" y="239" width="382" height="553"/>
                                 <color key="backgroundColor" systemColor="systemYellowColor"/>
                                 <color key="textColor" systemColor="labelColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="6CN-0h-8zM">
-                                <rect key="frame" x="16" y="758" width="382" height="30"/>
+                                <rect key="frame" x="16" y="812" width="382" height="30"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hYA-xx-jzD">
                                         <rect key="frame" x="0.0" y="0.0" width="191" height="30"/>
@@ -141,6 +141,9 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="D6b-yI-yPU">
                                         <rect key="frame" x="191" y="0.0" width="191" height="30"/>
                                         <state key="normal" title="다음"/>
+                                        <connections>
+                                            <segue destination="Wod-v3-INi" kind="show" id="zI0-8y-9hH"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
@@ -170,6 +173,7 @@
                     <connections>
                         <outlet property="cancelBtn" destination="hYA-xx-jzD" id="xtK-DE-zlS"/>
                         <outlet property="idField" destination="WlP-6a-9iR" id="wcC-bT-yGa"/>
+                        <outlet property="imageView" destination="baV-nb-IWM" id="KFR-Fn-Cp6"/>
                         <outlet property="introText" destination="nH0-SU-4Ub" id="h5y-hC-ZOW"/>
                         <outlet property="nextBtn" destination="D6b-yI-yPU" id="n8O-oU-yJX"/>
                         <outlet property="pwCheckField" destination="VF1-bH-4XW" id="7Ec-1M-VpF"/>
@@ -275,10 +279,9 @@
         <!--Navigation Controller-->
         <scene sceneID="Ubj-Xn-E4C">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="mWE-7b-t4w" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" modalPresentationStyle="fullScreen" navigationBarHidden="YES" id="mWE-7b-t4w" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="604-y4-SoB">
-                        <rect key="frame" x="0.0" y="-54" width="0.0" height="0.0"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
