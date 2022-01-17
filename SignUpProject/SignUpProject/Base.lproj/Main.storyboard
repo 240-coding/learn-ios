@@ -239,14 +239,23 @@
                                         <state key="normal" title="취소">
                                             <color key="titleColor" systemColor="systemRedColor"/>
                                         </state>
+                                        <connections>
+                                            <action selector="pressCancelButton:" destination="Wod-v3-INi" eventType="touchUpInside" id="Zom-Bi-Hvh"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x6z-oA-6Nx">
                                         <rect key="frame" x="127.5" y="0.0" width="127" height="30"/>
                                         <state key="normal" title="이전"/>
+                                        <connections>
+                                            <action selector="pressPrevButton:" destination="Wod-v3-INi" eventType="touchUpInside" id="OrW-Pq-ZDz"/>
+                                        </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HdA-gF-MzH">
+                                    <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HdA-gF-MzH">
                                         <rect key="frame" x="254.5" y="0.0" width="127.5" height="30"/>
                                         <state key="normal" title="가입"/>
+                                        <connections>
+                                            <action selector="pressSignUpButton:" destination="Wod-v3-INi" eventType="touchUpInside" id="ryS-TG-vPZ"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
