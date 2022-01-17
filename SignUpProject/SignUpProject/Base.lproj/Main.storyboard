@@ -206,7 +206,7 @@
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ihX-YM-ebI">
                                 <rect key="frame" x="16" y="99.5" width="382" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" keyboardType="numberPad" textContentType="tel"/>
                             </textField>
                             <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" style="wheels" translatesAutoresizingMaskIntoConstraints="NO" id="e2g-3u-sU2">
                                 <rect key="frame" x="0.0" y="185" width="414" height="216"/>
@@ -250,6 +250,7 @@
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="3g0-aW-VHU"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="3g0-aW-VHU" firstAttribute="trailing" secondItem="tSd-Tw-zyz" secondAttribute="trailing" constant="16" id="3fX-L7-ATZ"/>
                             <constraint firstItem="M8e-lZ-PZi" firstAttribute="leading" secondItem="3g0-aW-VHU" secondAttribute="leading" constant="16" id="7xQ-Jn-Zng"/>
@@ -269,10 +270,18 @@
                             <constraint firstItem="Sal-A2-XR9" firstAttribute="top" secondItem="ihX-YM-ebI" secondAttribute="bottom" constant="10" id="xxv-ev-znV"/>
                             <constraint firstItem="tSd-Tw-zyz" firstAttribute="leading" secondItem="3g0-aW-VHU" secondAttribute="leading" constant="16" id="y4i-tT-Kb2"/>
                         </constraints>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="pSF-rg-jj7" appends="YES" id="MUG-7Z-2O8"/>
+                        </connections>
                     </view>
                     <navigationItem key="navigationItem" id="cdW-5J-VsU"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="h9W-KS-elc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="pSF-rg-jj7">
+                    <connections>
+                        <action selector="tapView:" destination="Wod-v3-INi" id="J2s-Jt-hIb"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="2686.9565217391305" y="77.678571428571431"/>
         </scene>
