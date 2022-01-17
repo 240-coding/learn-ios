@@ -108,6 +108,7 @@ class SecondViewController: UIViewController, UIImagePickerControllerDelegate, U
         UserInformation.shared.id = self.idField?.text
         UserInformation.shared.password = self.pwField?.text
         UserInformation.shared.introduce = self.introText?.text
+        UserInformation.shared.image = self.imageView?.image
     }
 
     /*
