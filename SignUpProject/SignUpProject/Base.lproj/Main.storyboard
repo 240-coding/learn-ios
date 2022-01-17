@@ -142,7 +142,8 @@
                                         <rect key="frame" x="191" y="0.0" width="191" height="30"/>
                                         <state key="normal" title="다음"/>
                                         <connections>
-                                            <segue destination="Wod-v3-INi" kind="show" id="zI0-8y-9hH"/>
+                                            <action selector="pressNextButton" destination="vNW-oF-yqJ" eventType="touchUpInside" id="xeo-Gk-PsG"/>
+                                            <segue destination="Wod-v3-INi" kind="show" id="GU2-JV-1au"/>
                                         </connections>
                                     </button>
                                 </subviews>

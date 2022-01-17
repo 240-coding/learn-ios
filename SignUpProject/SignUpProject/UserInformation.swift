@@ -11,6 +11,7 @@ class UserInformation {
     
     var id: String?
     var password: String?
+    var introduce: String?
     var phone: String?
     var birth: String? = "Label"
 }

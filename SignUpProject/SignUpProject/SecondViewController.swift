@@ -46,6 +46,10 @@ class SecondViewController: UIViewController, UIImagePickerControllerDelegate, U
         self.dismiss(animated: true, completion: nil)
     }
     
+    @IBAction func pressNextButton() {
+        saveUserInformation()
+    }
+    
     // 사용자가 모든 정보를 기입한 상태가 아니라면 화면 오른쪽 하단의 '다음' 버튼은 기본적으로 비활성화되어있으며, 프로필 이미지, 아이디, 자기소개가 모두 채워지고, 패스워드가 일치하면 '다음' 버튼이 활성화됩니다.
 
     // MARK: - View
@@ -98,6 +102,12 @@ class SecondViewController: UIViewController, UIImagePickerControllerDelegate, U
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         setNextBtnState()
         self.dismiss(animated: true, completion: nil)
+    }
+    
+    func saveUserInformation() {
+        UserInformation.shared.id = self.idField?.text
+        UserInformation.shared.password = self.pwField?.text
+        UserInformation.shared.introduce = self.introText?.text
     }
 
     /*

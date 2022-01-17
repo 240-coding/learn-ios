@@ -12,8 +12,6 @@ class ThirdViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var phoneField: UITextField?
     @IBOutlet weak var birthLabel: UILabel?
     @IBOutlet weak var birthPicker: UIDatePicker?
-    @IBOutlet weak var cancelBtn: UIButton?
-    @IBOutlet weak var prevBtn: UIButton?
     @IBOutlet weak var signUpBtn: UIButton?
     let dateFormatter: DateFormatter = {
         let formatter: DateFormatter = DateFormatter()
