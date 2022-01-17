@@ -74,6 +74,9 @@
                             <outletCollection property="gestureRecognizers" destination="5Ky-Oc-1xv" appends="YES" id="caC-wH-KtL"/>
                         </connections>
                     </view>
+                    <connections>
+                        <outlet property="idField" destination="lH9-pM-3ks" id="fki-9K-VeW"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
                 <tapGestureRecognizer id="5Ky-Oc-1xv">
@@ -209,7 +212,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="numberPad" textContentType="tel"/>
                             </textField>
-                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" style="wheels" translatesAutoresizingMaskIntoConstraints="NO" id="e2g-3u-sU2">
+                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" style="wheels" translatesAutoresizingMaskIntoConstraints="NO" id="e2g-3u-sU2">
                                 <rect key="frame" x="0.0" y="185" width="414" height="216"/>
                                 <connections>
                                     <action selector="didDatePickerChanged:" destination="Wod-v3-INi" eventType="valueChanged" id="PQY-WA-VTF"/>
