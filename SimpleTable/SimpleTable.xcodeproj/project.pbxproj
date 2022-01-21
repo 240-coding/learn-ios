@@ -13,6 +13,8 @@
 		89CB8821279868F100D2C7EC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 89CB881F279868F100D2C7EC /* Main.storyboard */; };
 		89CB8823279868F500D2C7EC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 89CB8822279868F500D2C7EC /* Assets.xcassets */; };
 		89CB8826279868F500D2C7EC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 89CB8824279868F500D2C7EC /* LaunchScreen.storyboard */; };
+		89CB882F2798702100D2C7EC /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89CB882E2798702100D2C7EC /* CustomTableViewCell.swift */; };
+		89E71CCD279A8DE100985AEF /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89E71CCC279A8DE100985AEF /* SecondViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +26,8 @@
 		89CB8822279868F500D2C7EC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		89CB8825279868F500D2C7EC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		89CB8827279868F500D2C7EC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		89CB882E2798702100D2C7EC /* CustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
+		89E71CCC279A8DE100985AEF /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +64,8 @@
 				89CB881B279868F100D2C7EC /* SceneDelegate.swift */,
 				89CB881D279868F100D2C7EC /* ViewController.swift */,
 				89CB881F279868F100D2C7EC /* Main.storyboard */,
+				89E71CCC279A8DE100985AEF /* SecondViewController.swift */,
+				89CB882E2798702100D2C7EC /* CustomTableViewCell.swift */,
 				89CB8822279868F500D2C7EC /* Assets.xcassets */,
 				89CB8824279868F500D2C7EC /* LaunchScreen.storyboard */,
 				89CB8827279868F500D2C7EC /* Info.plist */,
@@ -139,6 +145,8 @@
 			files = (
 				89CB881E279868F100D2C7EC /* ViewController.swift in Sources */,
 				89CB881A279868F100D2C7EC /* AppDelegate.swift in Sources */,
+				89CB882F2798702100D2C7EC /* CustomTableViewCell.swift in Sources */,
+				89E71CCD279A8DE100985AEF /* SecondViewController.swift in Sources */,
 				89CB881C279868F100D2C7EC /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
