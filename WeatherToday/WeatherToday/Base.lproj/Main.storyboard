@@ -15,13 +15,61 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="53v-FR-5qM">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="CountryCell" id="neb-g1-0s8" customClass="CountryTableViewCell" customModule="WeatherToday" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="43"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="neb-g1-0s8" id="ldV-bc-Mkn">
+                                            <rect key="frame" x="0.0" y="0.0" width="383" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="qJL-dJ-Or2">
+                                                    <rect key="frame" x="10" y="0.0" width="60" height="43"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="60" id="n4Z-EY-rmy"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LHq-Ef-7cP">
+                                                    <rect key="frame" x="85" y="11" width="42" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="LHq-Ef-7cP" firstAttribute="top" secondItem="ldV-bc-Mkn" secondAttribute="topMargin" id="2Sy-aS-vav"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="LHq-Ef-7cP" secondAttribute="bottom" id="ZLc-yc-V9U"/>
+                                                <constraint firstItem="qJL-dJ-Or2" firstAttribute="leading" secondItem="ldV-bc-Mkn" secondAttribute="leading" constant="10" id="i95-gS-OS5"/>
+                                                <constraint firstItem="qJL-dJ-Or2" firstAttribute="top" secondItem="ldV-bc-Mkn" secondAttribute="top" id="kdv-mg-vTX"/>
+                                                <constraint firstAttribute="bottom" secondItem="qJL-dJ-Or2" secondAttribute="bottom" id="mL1-HV-fwL"/>
+                                                <constraint firstItem="LHq-Ef-7cP" firstAttribute="leading" secondItem="qJL-dJ-Or2" secondAttribute="trailing" constant="15" id="tkf-c9-3eK"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="countryImage" destination="qJL-dJ-Or2" id="adD-qq-ISh"/>
+                                            <outlet property="nameLabel" destination="LHq-Ef-7cP" id="dsB-oJ-iIa"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="53v-FR-5qM" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="DuL-Kl-xbi"/>
+                            <constraint firstItem="53v-FR-5qM" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="hKE-r9-cn5"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="53v-FR-5qM" secondAttribute="bottom" id="nXM-Qf-Ylg"/>
+                            <constraint firstItem="53v-FR-5qM" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="wjJ-ca-yZ8"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-214" y="78"/>
+            <point key="canvasLocation" x="-214.49275362318843" y="77.678571428571431"/>
         </scene>
         <!--Second View Controller-->
         <scene sceneID="zPD-Uf-Rsg">
