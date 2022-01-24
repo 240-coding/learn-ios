@@ -7,19 +7,7 @@
 
 import Foundation
 
-//{
-//   "city_name":"파리",
-//   "state":10,
-//   "celsius":11.3,
-//   "rainfall_probability":90
-//},
-//
-//10 : sunny
-//11 : cloudy
-//12 : rainy
-//13 : snowy
-
-struct City {
+struct City: Codable {
     var name: String
     var state: Int
     var celsius: Float
@@ -42,14 +30,15 @@ struct City {
         }
     }
     var degreeText: String {
-        return "섭씨 \(celsius)도 / 화씨 \(fahrenheit)도"
+        return "섭씨 \(celsius)도 / 화씨 \(String(format: "%.1f", fahrenheit))도"
     }
     var rainfallText: String {
         return "강수확률 \(rainfallProbability)%"
     }
     
     enum CodingKeys: String, CodingKey {
-        case name, state, celsius
+        case name = "city_name"
+        case state, celsius
         case rainfallProbability = "rainfall_probability"
     }
 }
