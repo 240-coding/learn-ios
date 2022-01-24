@@ -1,36 +1,42 @@
 import Foundation
 
-var cache = [String: [String]]()
-
-func combinations(_ array: [String]) -> Set<String> {
-    if array.count == 0 { return [] }
-
-    let answerArray = (0..<array.count).flatMap { i -> [String] in
-        var removedArray = array
-        let elem = removedArray.remove(at: i)
-        return [elem] + combinations(removedArray).map { elem + $0 }
+func solution(_ id_list:[String], _ report:[String], _ k:Int) -> [Int] {
+    var result: [Int] = Array(repeating: 0, count: id_list.count)
+    var resultdic: [String: Int] = [:]
+    var reportlist: [String: [String]] = [:]
+    for name in Set(report) {
+        let names = name.components(separatedBy: " ")
+        reportlist[names[1]] = (reportlist[names[1]] ?? []) + [names[0]]
+//        resultdic[names[0]] = (resultdic[names[0]] ?? 0) + 1
+//        if let key = reportlist[names[1]] {
+//            if !key.contains(names[0]) {
+//                reportlist[names[1]]!.append(names[0])
+//            }
+//        } else {
+//            reportlist[names[1]] = [names[0]]
+//        }
     }
-//    print("answerArray: \(answerArray)")
-    return Set(answerArray)
+    for (key, value) in reportlist {
+        if value.count >= k {
+            for i in value {
+                resultdic[i] = (resultdic[i] ?? 0) + 1
+//                if let id = resultdic[i] {
+//                    resultdic[i]! += 1
+//                } else {
+//                    resultdic[i] = 1
+//                }
+            }
+        }
+    }
+    for (key, value) in resultdic {
+        let index = id_list.firstIndex(of: key)!
+        result[index] = value
+    }
+    
+    return result
 }
 
-func isPrime(_ number: Int) -> Bool {
-    guard number > 1 else {
-        return false
-    }
+var id_list = ["muzi", "frodo", "apeach", "neo"]
+var report = ["muzi frodo","apeach frodo","frodo neo","muzi neo","apeach muzi"]
 
-    for i in 2..<number {
-        if number % i == 0 { return false }
-    }
-    return true
-}
-
-func solution(_ numbers: String) -> Int {
-    let array = Array(numbers).map{ String($0) }
-    print(Set(combinations(array)))
-    let intSet = Set(combinations(array).compactMap { Int($0) })
-    print(intSet)
-    return intSet.filter{ isPrime($0) }.count
-}
-
-print(solution("011"))
+print(solution(id_list, report, 2))
