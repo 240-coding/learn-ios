@@ -26,16 +26,24 @@ class ViewController: UIViewController, UITableViewDataSource {
         } catch {
             print(error.localizedDescription)
         }
-        print(countries)
+        
+        self.tableView.reloadData()
     }
 
     // MARK: - UITableView Methods
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        <#code#>
+        return self.countries.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        <#code#>
+        guard let cell: CountryTableViewCell = tableView.dequeueReusableCell(withIdentifier: self.cellIdentifier, for: indexPath) as? CountryTableViewCell else {
+            preconditionFailure("테이블 뷰 가져오기 실패")
+        }
+        let country: Country = self.countries[indexPath.row]
+        cell.countryImage?.image = UIImage(named: country.imageName)
+        cell.nameLabel?.text = country.name
+        
+        return cell
     }
 
 }
