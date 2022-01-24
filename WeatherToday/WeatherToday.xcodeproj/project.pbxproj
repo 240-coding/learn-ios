@@ -17,6 +17,8 @@
 		89F75B45279EF0EA00A92D9D /* ThirdViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89F75B44279EF0EA00A92D9D /* ThirdViewController.swift */; };
 		89FBD63D279EF76E00348DD9 /* CountryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89FBD63C279EF76E00348DD9 /* CountryTableViewCell.swift */; };
 		89FBD640279F019800348DD9 /* Country.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89FBD63F279F019800348DD9 /* Country.swift */; };
+		89FBD643279F2D6300348DD9 /* City.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89FBD642279F2D6300348DD9 /* City.swift */; };
+		89FBD646279F316F00348DD9 /* CityTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89FBD645279F316F00348DD9 /* CityTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +34,8 @@
 		89F75B44279EF0EA00A92D9D /* ThirdViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdViewController.swift; sourceTree = "<group>"; };
 		89FBD63C279EF76E00348DD9 /* CountryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryTableViewCell.swift; sourceTree = "<group>"; };
 		89FBD63F279F019800348DD9 /* Country.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Country.swift; sourceTree = "<group>"; };
+		89FBD642279F2D6300348DD9 /* City.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = City.swift; sourceTree = "<group>"; };
+		89FBD645279F316F00348DD9 /* CityTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,6 +72,8 @@
 				89E71D01279AAD3700985AEF /* SceneDelegate.swift */,
 				89E71D03279AAD3700985AEF /* ViewController.swift */,
 				89E71D05279AAD3700985AEF /* Main.storyboard */,
+				89FBD645279F316F00348DD9 /* CityTableViewCell.swift */,
+				89FBD642279F2D6300348DD9 /* City.swift */,
 				89FBD63C279EF76E00348DD9 /* CountryTableViewCell.swift */,
 				89F75B41279EF0E500A92D9D /* SecondViewController.swift */,
 				89F75B44279EF0EA00A92D9D /* ThirdViewController.swift */,
@@ -149,12 +155,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				89FBD646279F316F00348DD9 /* CityTableViewCell.swift in Sources */,
 				89FBD640279F019800348DD9 /* Country.swift in Sources */,
 				89FBD63D279EF76E00348DD9 /* CountryTableViewCell.swift in Sources */,
 				89F75B42279EF0E500A92D9D /* SecondViewController.swift in Sources */,
 				89E71D04279AAD3700985AEF /* ViewController.swift in Sources */,
 				89F75B45279EF0EA00A92D9D /* ThirdViewController.swift in Sources */,
 				89E71D00279AAD3700985AEF /* AppDelegate.swift in Sources */,
+				89FBD643279F2D6300348DD9 /* City.swift in Sources */,
 				89E71D02279AAD3700985AEF /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
