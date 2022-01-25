@@ -142,6 +142,7 @@
                                             <outlet property="nameLabel" destination="IfF-Vk-ZzH" id="rAJ-uo-LuR"/>
                                             <outlet property="rainfallLabel" destination="UDU-bR-43P" id="b9f-4y-2re"/>
                                             <outlet property="weatherImage" destination="by1-cF-jTL" id="Rn9-Rd-zfh"/>
+                                            <segue destination="mcF-9g-uK2" kind="show" id="uM6-bV-6df"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -175,9 +176,54 @@
                     <view key="view" contentMode="scaleToFill" id="KMX-4a-yTy">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="KVo-U1-tsk">
+                                <rect key="frame" x="82" y="138" width="250" height="250"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="250" id="RlN-sD-xQO"/>
+                                    <constraint firstAttribute="height" constant="250" id="Uon-pc-FzE"/>
+                                </constraints>
+                            </imageView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="ziA-9t-EH6">
+                                <rect key="frame" x="183" y="413" width="48" height="92"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Tz-Od-OxZ">
+                                        <rect key="frame" x="0.0" y="0.0" width="48" height="24"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleTitle3"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s0d-a3-MFJ">
+                                        <rect key="frame" x="3.5" y="34" width="41.5" height="24"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kqc-Cf-wEd">
+                                        <rect key="frame" x="3.5" y="68" width="41.5" height="24"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="Hjx-Z7-gxI"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="ziA-9t-EH6" firstAttribute="top" secondItem="KVo-U1-tsk" secondAttribute="bottom" constant="25" id="93p-kU-yaz"/>
+                            <constraint firstItem="KVo-U1-tsk" firstAttribute="top" secondItem="Hjx-Z7-gxI" secondAttribute="top" constant="50" id="CKx-YR-ckO"/>
+                            <constraint firstItem="ziA-9t-EH6" firstAttribute="centerX" secondItem="KMX-4a-yTy" secondAttribute="centerX" id="ar8-ld-1FO"/>
+                            <constraint firstItem="KVo-U1-tsk" firstAttribute="centerX" secondItem="KMX-4a-yTy" secondAttribute="centerX" id="hTH-y7-XHc"/>
+                        </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="3Z1-OK-QBm"/>
+                    <connections>
+                        <outlet property="degreeLabel" destination="s0d-a3-MFJ" id="WNW-pc-t4Y"/>
+                        <outlet property="rainfallLabel" destination="kqc-Cf-wEd" id="zIh-2Z-EhS"/>
+                        <outlet property="weatherImage" destination="KVo-U1-tsk" id="QID-UM-ltG"/>
+                        <outlet property="weatherLabel" destination="7Tz-Od-OxZ" id="SA8-MN-C9J"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="prY-De-uzE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -191,6 +237,11 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Ic1-gC-nnW">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="barTintColor" systemColor="systemBlueColor"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -205,6 +256,9 @@
     <resources>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemBlueColor">
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

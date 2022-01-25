@@ -8,7 +8,13 @@
 import UIKit
 
 class ThirdViewController: UIViewController {
+    // MARK: - Properties
+    @IBOutlet weak var weatherImage: UIImageView!
+    @IBOutlet weak var weatherLabel: UILabel!
+    @IBOutlet weak var degreeLabel: UILabel!
+    @IBOutlet weak var rainfallLabel: UILabel!
 
+    // MARK: - Load View
     override func viewDidLoad() {
         super.viewDidLoad()
 
