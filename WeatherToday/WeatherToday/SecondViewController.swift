@@ -9,6 +9,7 @@ import UIKit
 
 class SecondViewController: UIViewController, UITableViewDataSource {
     @IBOutlet weak var tableView: UITableView!
+    var navigationTitle: String?
     var country: String?
     let cellIdeitifier: String = "CityCell"
     var cities: [City] = []
@@ -17,6 +18,11 @@ class SecondViewController: UIViewController, UITableViewDataSource {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        guard let countryName = navigationTitle else {
+            return
+        }
+        self.navigationItem.title = countryName
+        self.navigationItem.backBarButtonItem?.tintColor = .white
         decodeJSON()
         self.tableView.reloadData()
     }
@@ -70,5 +76,6 @@ class SecondViewController: UIViewController, UITableViewDataSource {
         nextViewController.weatherLabelData = cell.weatherStateName
         nextViewController.degreeLabelData = cell.degreeLabel.text
         nextViewController.rainfallLabelData = cell.rainfallLabel.text
+        nextViewController.navigationTitle = cell.nameLabel.text
     }
 }

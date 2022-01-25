@@ -17,6 +17,7 @@ class ThirdViewController: UIViewController {
     var weatherLabelData: String?
     var degreeLabelData: String?
     var rainfallLabelData: String?
+    var navigationTitle: String?
     
 
     // MARK: - Load View
@@ -24,6 +25,10 @@ class ThirdViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        guard let cityName = navigationTitle else {
+            return
+        }
+        self.navigationItem.title = cityName
         setData()
     }
     
