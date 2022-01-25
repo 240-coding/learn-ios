@@ -29,6 +29,20 @@ struct City: Codable {
             return "sunny"
         }
     }
+    var weatherStateName: String {
+        switch state {
+        case 10:
+            return "맑음"
+        case 11:
+            return "흐림"
+        case 12:
+            return "비"
+        case 13:
+            return "눈"
+        default:
+            return "맑음"
+        }
+    }
     var degreeText: String {
         return "섭씨 \(celsius)도 / 화씨 \(String(format: "%.1f", fahrenheit))도"
     }

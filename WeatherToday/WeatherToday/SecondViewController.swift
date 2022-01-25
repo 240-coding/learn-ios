@@ -46,6 +46,7 @@ class SecondViewController: UIViewController, UITableViewDataSource {
             preconditionFailure("셀 가져오기 실패")
         }
         let city: City = cities[indexPath.row]
+        cell.weatherStateName = city.weatherStateName
         cell.weatherImage.image = UIImage(named: city.weatherImage)
         cell.nameLabel.text = city.name
         cell.degreeLabel.text = city.degreeText
@@ -53,5 +54,21 @@ class SecondViewController: UIViewController, UITableViewDataSource {
         
         return cell
     }
+    // MARK: - Navigation
 
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // Get the new view controller using segue.destination.
+        // Pass the selected object to the new view controller.
+        guard let nextViewController: ThirdViewController = segue.destination as? ThirdViewController else {
+            return
+        }
+        guard let cell: CityTableViewCell = sender as? CityTableViewCell else {
+            return
+        }
+        nextViewController.weatherImageData = cell.weatherImage.image
+        nextViewController.weatherLabelData = cell.weatherStateName
+        nextViewController.degreeLabelData = cell.degreeLabel.text
+        nextViewController.rainfallLabelData = cell.rainfallLabel.text
+    }
 }
