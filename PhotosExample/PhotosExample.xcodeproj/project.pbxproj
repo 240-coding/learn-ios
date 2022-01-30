@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		899FFBA127A5C39B00EF1657 /* ImageZoomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 899FFBA027A5C39B00EF1657 /* ImageZoomViewController.swift */; };
 		89A2A6A027A46B14001CC10C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89A2A69F27A46B14001CC10C /* AppDelegate.swift */; };
 		89A2A6A227A46B14001CC10C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89A2A6A127A46B14001CC10C /* SceneDelegate.swift */; };
 		89A2A6A427A46B14001CC10C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89A2A6A327A46B14001CC10C /* ViewController.swift */; };
@@ -16,6 +17,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		899FFBA027A5C39B00EF1657 /* ImageZoomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageZoomViewController.swift; sourceTree = "<group>"; };
 		89A2A69C27A46B14001CC10C /* PhotosExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PhotosExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		89A2A69F27A46B14001CC10C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		89A2A6A127A46B14001CC10C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -59,6 +61,7 @@
 				89A2A69F27A46B14001CC10C /* AppDelegate.swift */,
 				89A2A6A127A46B14001CC10C /* SceneDelegate.swift */,
 				89A2A6A327A46B14001CC10C /* ViewController.swift */,
+				899FFBA027A5C39B00EF1657 /* ImageZoomViewController.swift */,
 				89A2A6A527A46B14001CC10C /* Main.storyboard */,
 				89A2A6A827A46B18001CC10C /* Assets.xcassets */,
 				89A2A6AA27A46B18001CC10C /* LaunchScreen.storyboard */,
@@ -140,6 +143,7 @@
 				89A2A6A427A46B14001CC10C /* ViewController.swift in Sources */,
 				89A2A6A027A46B14001CC10C /* AppDelegate.swift in Sources */,
 				89A2A6A227A46B14001CC10C /* SceneDelegate.swift in Sources */,
+				899FFBA127A5C39B00EF1657 /* ImageZoomViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
