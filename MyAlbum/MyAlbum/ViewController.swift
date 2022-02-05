@@ -29,7 +29,6 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         print(self.fetchResult?.count)
     }
 
-    // MARK: - Methods
     // MARK: - Collection View Data Source
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return self.fetchResult?.count ?? 0
@@ -43,7 +42,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
             return cell
         }
         let fetchedAssets = PHAsset.fetchAssets(in: collection, options: nil)
-        guard let coverAsset = fetchedAssets.firstObject else {
+        guard let coverAsset = fetchedAssets.lastObject else {
             return cell
         }
         PHImageManager.default().requestImage(for: coverAsset, targetSize: CGSize(width: 150, height: 150), contentMode: .aspectFill, options: nil, resultHandler: {image, _ in cell.image?.image = image})
