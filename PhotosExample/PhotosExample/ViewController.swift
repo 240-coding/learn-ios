@@ -52,6 +52,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         let fetchOptions = PHFetchOptions()
         fetchOptions.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: false)]
         self.fetchResult = PHAsset.fetchAssets(in: cameraRollCollection, options: fetchOptions)
+        print(self.fetchResult)
     }
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -86,7 +87,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             print("제한")
         }
         PHPhotoLibrary.shared().register(self)
-        
+        print("메인: \(self.fetchResult.count)")
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
