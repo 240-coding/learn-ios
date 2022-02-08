@@ -39,7 +39,6 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
             fatalError("Unable to dequeue AlbumCollectionViewCell")
         }
         guard let collection = fetchResult?[indexPath.item] else {
-            print("oops")
             return cell
         }
         let fetchedAssets = PHAsset.fetchAssets(in: collection, options: nil)
@@ -51,6 +50,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         
         cell.albumName.text? = collection.localizedTitle ?? ""
         cell.albumPhotoCount.text? = String(fetchedAssets.count)
+        cell.localIdentifier = collection.localIdentifier
         
         return cell
     }
@@ -128,6 +128,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         guard let cell = sender as? AlbumCollectionViewCell else {
             return
         }
+        nextViewController.localIdentifier = cell.localIdentifier
         nextViewController.navigationTitle = cell.albumName.text
     }
 }

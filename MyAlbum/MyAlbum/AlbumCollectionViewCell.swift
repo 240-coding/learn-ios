@@ -11,6 +11,7 @@ class AlbumCollectionViewCell: UICollectionViewCell {
     @IBOutlet var image: UIImageView!
     @IBOutlet var albumName: UILabel!
     @IBOutlet var albumPhotoCount: UILabel!
+    var localIdentifier: String?
     
     override func awakeFromNib() {
         image.layer.cornerRadius = 5.0
