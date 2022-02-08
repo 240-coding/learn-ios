@@ -63,12 +63,12 @@
 				89948A2727AB78AC008E2E0B /* AppDelegate.swift */,
 				89948A2927AB78AC008E2E0B /* SceneDelegate.swift */,
 				89948A2B27AB78AC008E2E0B /* ViewController.swift */,
+				897B2DB727AEA888006C8C71 /* SecondViewController.swift */,
 				89948A2D27AB78AC008E2E0B /* Main.storyboard */,
 				89948A3B27AB7CDA008E2E0B /* AlbumCollectionViewCell.swift */,
 				89948A3027AB78AD008E2E0B /* Assets.xcassets */,
 				89948A3227AB78AD008E2E0B /* LaunchScreen.storyboard */,
 				89948A3527AB78AD008E2E0B /* Info.plist */,
-				897B2DB727AEA888006C8C71 /* SecondViewController.swift */,
 			);
 			path = MyAlbum;
 			sourceTree = "<group>";

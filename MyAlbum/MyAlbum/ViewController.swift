@@ -24,9 +24,9 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        self.navigationItem.title = "앨범"
         self.requestPhotoLibraryAccess()
         PHPhotoLibrary.shared().register(self)
-        print(self.fetchResult?.count)
     }
 
     // MARK: - Collection View Data Source
@@ -39,13 +39,16 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
             fatalError("Unable to dequeue AlbumCollectionViewCell")
         }
         guard let collection = fetchResult?[indexPath.item] else {
+            print("oops")
             return cell
         }
         let fetchedAssets = PHAsset.fetchAssets(in: collection, options: nil)
-        guard let coverAsset = fetchedAssets.lastObject else {
-            return cell
+        if let coverAsset = fetchedAssets.lastObject {
+            PHImageManager.default().requestImage(for: coverAsset, targetSize: CGSize(width: 150, height: 150), contentMode: .aspectFill, options: nil, resultHandler: {image, _ in cell.image?.image = image})
+        } else {
+            cell.image.image = nil
         }
-        PHImageManager.default().requestImage(for: coverAsset, targetSize: CGSize(width: 150, height: 150), contentMode: .aspectFill, options: nil, resultHandler: {image, _ in cell.image?.image = image})
+        
         cell.albumName.text? = collection.localizedTitle ?? ""
         cell.albumPhotoCount.text? = String(fetchedAssets.count)
         
@@ -71,8 +74,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     func requestCollection() {
         // Need options?
         print("컬렉션 불러오기")
-        self.fetchResult = PHAssetCollection.fetchAssetCollections(with: .smartAlbum, subtype: .smartAlbumUserLibrary, options: nil)
-        print(fetchResult)
+        self.fetchResult = PHAssetCollection.fetchAssetCollections(with: .smartAlbum, subtype: .albumRegular, options: nil)
     }
     func requestPhotoLibraryAccess() {
         PHPhotoLibrary.requestAuthorization(for: .readWrite) { status in
@@ -115,6 +117,18 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
 //            self.collectionView.reloadSections(IndexSet(0...0), with: .automatic)
             self.collectionView.reloadSections(IndexSet(0...0))
         }
+    }
+    // MARK: - Navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // Get the new view controller using segue.destination.
+        // Pass the selected object to the new view controller.
+        guard let nextViewController = segue.destination as? SecondViewController else {
+            return
+        }
+        guard let cell = sender as? AlbumCollectionViewCell else {
+            return
+        }
+        nextViewController.navigationTitle = cell.albumName.text
     }
 }
 
