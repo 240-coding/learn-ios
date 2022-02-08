@@ -19,26 +19,42 @@ class SecondViewController: UIViewController, UICollectionViewDataSource, UIColl
     var fetchResult: PHFetchResult<PHAsset>?
     var selectCount = 0
     var selectBool = false
+    var selectedCell = Set<IndexPath>()
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
         self.navigationItem.title = navigationTitle
+        self.collectionView.allowsMultipleSelection = true
         findTargetCollection()
     }
     
     // MARK: - Right Bar Button Item Action
     @IBAction func pressRightBarButtonItem(_ sender: Any) {
         if self.rightBarButtonItem.title == "선택" {
-            print("선택")
+            self.navigationItem.hidesBackButton = true
             self.rightBarButtonItem.title = "취소"
             self.navigationItem.title = "항목 선택"
             selectBool = true
         } else {
-            print("취소")
+            self.navigationItem.hidesBackButton = false
             self.rightBarButtonItem.title = "선택"
+            self.navigationItem.title = self.navigationTitle
             selectBool = false
+            // 선택 관련 상태 초기화
+            initCellStatus()
+            selectCount = 0
+        }
+    }
+    // MARK: - Init Cell Status
+    func initCellStatus() {
+        for indexPath in selectedCell {
+            guard let cell = collectionView.cellForItem(at: indexPath) as? SecondCollectionViewCell else {
+                return
+            }
+            cell.isSelected = false
+            cell.setDeselectedStatus()
         }
     }
     // MARK: - Collection View Data Source
@@ -66,12 +82,22 @@ class SecondViewController: UIViewController, UICollectionViewDataSource, UIColl
         return selectBool
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let cell = collectionView.cellForItem(at: indexPath) as? SecondCollectionViewCell else {
+            return
+        }
+        selectedCell.insert(indexPath)
+        cell.setSelectedStatus()
         selectCount += 1
-        print(selectCount)
+        self.navigationItem.title = "\(selectCount)장 선택"
     }
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
+        guard let cell = collectionView.cellForItem(at: indexPath) as? SecondCollectionViewCell else {
+            return
+        }
+        selectedCell.remove(indexPath)
+        cell.setDeselectedStatus()
         selectCount -= 1
-        print(selectCount)
+        self.navigationItem.title = selectCount == 0 ? "항목 선택" : "\(selectCount)장 선택"
     }
     // MARK: - Collection View Flow Layout
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -81,7 +107,19 @@ class SecondViewController: UIViewController, UICollectionViewDataSource, UIColl
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         return UIEdgeInsets(top: 5, left: 0, bottom: 5, right: 0)
     }
-    
+    // MARK: - Find Target Collection
+    func findTargetCollection() {
+        let fetchOptions = PHFetchOptions()
+        guard let localIdentifier = localIdentifier else {
+            return
+        }
+        let collection = PHAssetCollection.fetchAssetCollections(withLocalIdentifiers: [localIdentifier], options: nil)
+        if let targetCollection = collection.firstObject {
+            self.fetchResult = PHAsset.fetchAssets(in: targetCollection, options: nil)
+        } else {
+        }
+        print(fetchResult)
+    }
     /*
     // MARK: - Navigation
 

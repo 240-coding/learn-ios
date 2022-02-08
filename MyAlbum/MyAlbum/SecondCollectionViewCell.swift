@@ -9,4 +9,17 @@ import UIKit
 
 class SecondCollectionViewCell: UICollectionViewCell {
     @IBOutlet var image: UIImageView!
+    
+    override func awakeFromNib() {
+        image.isOpaque = true
+    }
+    
+    func setSelectedStatus() {
+        image.alpha = 0.7
+        image.layer.borderWidth = 3
+    }
+    func setDeselectedStatus() {
+        image.alpha = 1
+        image.layer.borderWidth = 0
+    }
 }
