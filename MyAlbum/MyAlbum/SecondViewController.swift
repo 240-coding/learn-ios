@@ -12,8 +12,10 @@ class SecondViewController: UIViewController, UICollectionViewDataSource, UIColl
     // MARK: - Properties
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var rightBarButtonItem: UIBarButtonItem!
+    @IBOutlet weak var photoOrderBarButtonItem: UIBarButtonItem!
     
     var localIdentifier: String?
+    var targetCollection: PHAssetCollection?
     var navigationTitle: String?
     var cellIdentifier: String = "secondCell"
     var fetchResult: PHFetchResult<PHAsset>?
@@ -55,6 +57,23 @@ class SecondViewController: UIViewController, UICollectionViewDataSource, UIColl
             }
             cell.isSelected = false
             cell.setDeselectedStatus()
+        }
+    }
+    // MARK: - Set Photos Order
+    @IBAction func pressUpPhotoOrderBarItemButton(_ sender: Any) {
+        let fetchOptions = PHFetchOptions()
+        if self.photoOrderBarButtonItem.title == "최신순" {
+            self.photoOrderBarButtonItem.title = "과거순"
+            fetchOptions.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: true)]
+        } else {
+            self.photoOrderBarButtonItem.title = "최신순"
+            fetchOptions.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: false)]
+        }
+        if let targetCollection = targetCollection {
+            self.fetchResult = PHAsset.fetchAssets(in: targetCollection, options: fetchOptions)
+            OperationQueue.main.addOperation {
+                self.collectionView.reloadData()
+            }
         }
     }
     // MARK: - Collection View Data Source
@@ -114,9 +133,12 @@ class SecondViewController: UIViewController, UICollectionViewDataSource, UIColl
             return
         }
         let collection = PHAssetCollection.fetchAssetCollections(withLocalIdentifiers: [localIdentifier], options: nil)
+        targetCollection = collection.firstObject
         if let targetCollection = collection.firstObject {
-            self.fetchResult = PHAsset.fetchAssets(in: targetCollection, options: nil)
+            fetchOptions.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: false)]
+            self.fetchResult = PHAsset.fetchAssets(in: targetCollection, options: fetchOptions)
         } else {
+            fatalError()
         }
         print(fetchResult)
     }
