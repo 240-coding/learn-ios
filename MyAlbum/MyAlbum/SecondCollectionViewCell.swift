@@ -9,6 +9,7 @@ import UIKit
 
 class SecondCollectionViewCell: UICollectionViewCell {
     @IBOutlet var image: UIImageView!
+    var localIdentifier: String?
     
     override func awakeFromNib() {
         image.isOpaque = true

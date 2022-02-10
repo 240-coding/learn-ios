@@ -107,7 +107,11 @@
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EmU-SF-ImD">
                                 <rect key="frame" x="0.0" y="813" width="414" height="49"/>
                                 <items>
-                                    <barButtonItem systemItem="action" id="qGb-nS-tZb"/>
+                                    <barButtonItem enabled="NO" systemItem="action" id="qGb-nS-tZb">
+                                        <connections>
+                                            <action selector="pressUpShareBarItemButton:" destination="OtD-5s-Z76" id="WeU-46-HMF"/>
+                                        </connections>
+                                    </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="Bor-0I-fW1"/>
                                     <barButtonItem title="최신순" id="hfQ-nA-a7O">
                                         <connections>
@@ -115,7 +119,7 @@
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="5K7-2x-5uv"/>
-                                    <barButtonItem systemItem="trash" id="bwg-iA-w2S"/>
+                                    <barButtonItem enabled="NO" systemItem="trash" id="bwg-iA-w2S"/>
                                 </items>
                             </toolbar>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="fLl-dY-Grh">
@@ -178,8 +182,10 @@
                     </navigationItem>
                     <connections>
                         <outlet property="collectionView" destination="fLl-dY-Grh" id="rAH-CY-02t"/>
+                        <outlet property="deletePhotoBarButtonItem" destination="bwg-iA-w2S" id="cEu-Fj-3A1"/>
                         <outlet property="photoOrderBarButtonItem" destination="hfQ-nA-a7O" id="jW9-sn-joc"/>
                         <outlet property="rightBarButtonItem" destination="3A6-su-Rt4" id="rfa-85-pkg"/>
+                        <outlet property="shareBarButtonItem" destination="qGb-nS-tZb" id="gCw-ak-QJZ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nWC-a3-bCM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

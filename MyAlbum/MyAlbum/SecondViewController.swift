@@ -13,6 +13,8 @@ class SecondViewController: UIViewController, UICollectionViewDataSource, UIColl
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var rightBarButtonItem: UIBarButtonItem!
     @IBOutlet weak var photoOrderBarButtonItem: UIBarButtonItem!
+    @IBOutlet weak var shareBarButtonItem: UIBarButtonItem!
+    @IBOutlet weak var deletePhotoBarButtonItem: UIBarButtonItem!
     
     var localIdentifier: String?
     var targetCollection: PHAssetCollection?
@@ -22,6 +24,7 @@ class SecondViewController: UIViewController, UICollectionViewDataSource, UIColl
     var selectCount = 0
     var selectBool = false
     var selectedCell = Set<IndexPath>()
+    var selectedCellImageInfo = Set<String?>()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,13 +42,19 @@ class SecondViewController: UIViewController, UICollectionViewDataSource, UIColl
             self.rightBarButtonItem.title = "취소"
             self.navigationItem.title = "항목 선택"
             selectBool = true
+            self.shareBarButtonItem.isEnabled = true
+            self.deletePhotoBarButtonItem.isEnabled = true
         } else {
             self.navigationItem.hidesBackButton = false
             self.rightBarButtonItem.title = "선택"
             self.navigationItem.title = self.navigationTitle
             selectBool = false
+            self.shareBarButtonItem.isEnabled = false
+            self.deletePhotoBarButtonItem.isEnabled = false
             // 선택 관련 상태 초기화
             initCellStatus()
+            selectedCell.removeAll()
+            selectedCellImageInfo.removeAll()
             selectCount = 0
         }
     }
@@ -76,6 +85,39 @@ class SecondViewController: UIViewController, UICollectionViewDataSource, UIColl
             }
         }
     }
+    // MARK: - Share Bar Item Button
+    @IBAction func pressUpShareBarItemButton(_ sender: Any) {
+        let activityItems: [UIImage] = importUIImageFromPHAsset()
+        let activityViewController = UIActivityViewController(activityItems: activityItems, applicationActivities: nil)
+//        activityViewController.completionWithItemsHandler = {(activity, success, items, error) in
+//            if success {
+//                print("공유 성공")
+//            } else {
+//                print("공유 실패")
+//            }
+//        }
+        self.present(activityViewController, animated: true, completion: nil)
+    }
+    
+    func importUIImageFromPHAsset() -> [UIImage] {
+        var selectedImages = [UIImage]()
+        for localIdentifier in selectedCellImageInfo {
+            guard let localIdentifier = localIdentifier else {
+                continue
+            }
+            guard let asset = PHAsset.fetchAssets(withLocalIdentifiers: [localIdentifier], options: nil).firstObject else {
+                continue
+            }
+
+            PHImageManager.default().requestImage(for: asset, targetSize: PHImageManagerMaximumSize, contentMode: .aspectFill, options: nil, resultHandler: {image, _ in guard let image = image else {
+                return
+            }
+                selectedImages.append(image)})
+            
+        }
+        print(selectedImages)
+        return selectedImages
+    }
     // MARK: - Collection View Data Source
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return self.fetchResult?.count ?? 0
@@ -90,6 +132,7 @@ class SecondViewController: UIViewController, UICollectionViewDataSource, UIColl
         }
         let imageAsset = assets.object(at: indexPath.item)
         PHImageManager.default().requestImage(for: imageAsset, targetSize: CGSize(width: 150, height: 150), contentMode: .aspectFill, options: nil, resultHandler: {image, _ in cell.image?.image = image})
+        cell.localIdentifier = imageAsset.localIdentifier
         
         return cell
     }
@@ -105,6 +148,7 @@ class SecondViewController: UIViewController, UICollectionViewDataSource, UIColl
             return
         }
         selectedCell.insert(indexPath)
+        selectedCellImageInfo.insert(cell.localIdentifier)
         cell.setSelectedStatus()
         selectCount += 1
         self.navigationItem.title = "\(selectCount)장 선택"
@@ -114,6 +158,7 @@ class SecondViewController: UIViewController, UICollectionViewDataSource, UIColl
             return
         }
         selectedCell.remove(indexPath)
+        selectedCellImageInfo.remove(cell.localIdentifier)
         cell.setDeselectedStatus()
         selectCount -= 1
         self.navigationItem.title = selectCount == 0 ? "항목 선택" : "\(selectCount)장 선택"
