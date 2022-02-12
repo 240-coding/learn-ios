@@ -15,6 +15,7 @@
 		89948A3127AB78AD008E2E0B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 89948A3027AB78AD008E2E0B /* Assets.xcassets */; };
 		89948A3427AB78AD008E2E0B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 89948A3227AB78AD008E2E0B /* LaunchScreen.storyboard */; };
 		89948A3C27AB7CDA008E2E0B /* AlbumCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89948A3B27AB7CDA008E2E0B /* AlbumCollectionViewCell.swift */; };
+		89AEDE5427B7D84C00FD7B78 /* ThirdViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89AEDE5327B7D84C00FD7B78 /* ThirdViewController.swift */; };
 		89B968C327B29C6D00FB8997 /* SecondCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89B968C227B29C6D00FB8997 /* SecondCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
@@ -29,6 +30,7 @@
 		89948A3327AB78AD008E2E0B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		89948A3527AB78AD008E2E0B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		89948A3B27AB7CDA008E2E0B /* AlbumCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumCollectionViewCell.swift; sourceTree = "<group>"; };
+		89AEDE5327B7D84C00FD7B78 /* ThirdViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdViewController.swift; sourceTree = "<group>"; };
 		89B968C227B29C6D00FB8997 /* SecondCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -66,6 +68,7 @@
 				89948A2927AB78AC008E2E0B /* SceneDelegate.swift */,
 				89948A2B27AB78AC008E2E0B /* ViewController.swift */,
 				897B2DB727AEA888006C8C71 /* SecondViewController.swift */,
+				89AEDE5327B7D84C00FD7B78 /* ThirdViewController.swift */,
 				89948A2D27AB78AC008E2E0B /* Main.storyboard */,
 				89B968C227B29C6D00FB8997 /* SecondCollectionViewCell.swift */,
 				89948A3B27AB7CDA008E2E0B /* AlbumCollectionViewCell.swift */,
@@ -150,6 +153,7 @@
 				89948A3C27AB7CDA008E2E0B /* AlbumCollectionViewCell.swift in Sources */,
 				89948A2C27AB78AC008E2E0B /* ViewController.swift in Sources */,
 				89B968C327B29C6D00FB8997 /* SecondCollectionViewCell.swift in Sources */,
+				89AEDE5427B7D84C00FD7B78 /* ThirdViewController.swift in Sources */,
 				89948A2827AB78AC008E2E0B /* AppDelegate.swift in Sources */,
 				897B2DB827AEA888006C8C71 /* SecondViewController.swift in Sources */,
 				89948A2A27AB78AC008E2E0B /* SceneDelegate.swift in Sources */,

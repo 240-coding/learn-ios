@@ -31,6 +31,7 @@ class SecondViewController: UIViewController, UICollectionViewDataSource, UIColl
         self.navigationItem.title = navigationTitle
         self.collectionView.allowsMultipleSelection = true
         findTargetCollection()
+        PHPhotoLibrary.shared().register(self)
     }
     
     // MARK: - Right Bar Button Item Action
@@ -60,7 +61,7 @@ class SecondViewController: UIViewController, UICollectionViewDataSource, UIColl
                 guard let cell = collectionView.cellForItem(at: indexPath) as? SecondCollectionViewCell else {
                     return
                 }
-                cell.isSelected = false
+                self.collectionView.deselectItem(at: indexPath, animated: false)
                 cell.setDeselectedStatus()
             }
         }
@@ -124,8 +125,21 @@ class SecondViewController: UIViewController, UICollectionViewDataSource, UIColl
     // MARK: - Delete Selected Photos
     @IBAction func pressUpDeletePhotoBarItemButton(_ sender: Any) {
         // 선택한 사진 삭제
-        
+        guard let indexPaths = self.collectionView.indexPathsForSelectedItems, let fetchResult = self.fetchResult else {
+            return
+        }
+        let assets: [PHAsset] = indexPaths.map{ fetchResult[$0.item] }
+        PHPhotoLibrary.shared().performChanges({
+            PHAssetChangeRequest.deleteAssets(assets as NSArray)
+        }, completionHandler: nil)
         // 선택 해제
+        self.navigationItem.hidesBackButton = false
+        self.rightBarButtonItem.title = "선택"
+        self.navigationItem.title = self.navigationTitle
+        selectBool = false
+        self.shareBarButtonItem.isEnabled = false
+        self.deletePhotoBarButtonItem.isEnabled = false
+        initCellStatus()
     }
     // MARK: - PHPhotoLibraryChangeObserver
     func photoLibraryDidChange(_ changeInstance: PHChange) {
@@ -136,7 +150,7 @@ class SecondViewController: UIViewController, UICollectionViewDataSource, UIColl
             self.fetchResult = changes.fetchResultAfterChanges
         }
         OperationQueue.main.addOperation {
-            self.collectionView.reloadData()
+            self.collectionView.reloadSections(IndexSet(0...0))
         }
     }
     
@@ -159,25 +173,37 @@ class SecondViewController: UIViewController, UICollectionViewDataSource, UIColl
         return cell
     }
     // MARK: - Collection View Delegate
-    func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
-        return selectBool
-    }
-    func collectionView(_ collectionView: UICollectionView, shouldDeselectItemAt indexPath: IndexPath) -> Bool {
-        return selectBool
-    }
+//    func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
+//        return selectBool
+//    }
+//    func collectionView(_ collectionView: UICollectionView, shouldDeselectItemAt indexPath: IndexPath) -> Bool {
+//        return selectBool
+//    }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        guard let cell = collectionView.cellForItem(at: indexPath) as? SecondCollectionViewCell, let count = self.collectionView.indexPathsForSelectedItems?.count else {
+        guard let cell = collectionView.cellForItem(at: indexPath) as? SecondCollectionViewCell else {
             return
         }
-        cell.setSelectedStatus()
-        self.navigationItem.title = "\(count)장 선택"
+        if self.rightBarButtonItem.title == "취소" {
+            print(cell.isSelected)
+            guard let count = self.collectionView.indexPathsForSelectedItems?.count else {
+                return
+            }
+            cell.setSelectedStatus()
+            self.navigationItem.title = "\(count)장 선택"
+        } else {
+            self.collectionView.deselectItem(at: indexPath, animated: false)
+            print(cell.isSelected)
+            self.performSegue(withIdentifier: "showThirdViewController", sender: nil)
+        }
     }
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
-        guard let cell = collectionView.cellForItem(at: indexPath) as? SecondCollectionViewCell, let count = self.collectionView.indexPathsForSelectedItems?.count else {
-            return
+        if self.rightBarButtonItem.title == "취소" {
+            guard let cell = collectionView.cellForItem(at: indexPath) as? SecondCollectionViewCell, let count = self.collectionView.indexPathsForSelectedItems?.count else {
+                return
+            }
+            cell.setDeselectedStatus()
+            self.navigationItem.title = count == 0 ? "항목 선택" : "\(count)장 선택"
         }
-        cell.setDeselectedStatus()
-        self.navigationItem.title = count == 0 ? "항목 선택" : "\(count)장 선택"
     }
     // MARK: - Collection View Flow Layout
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

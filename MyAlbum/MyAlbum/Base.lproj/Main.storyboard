@@ -190,11 +190,74 @@
                         <outlet property="photoOrderBarButtonItem" destination="hfQ-nA-a7O" id="jW9-sn-joc"/>
                         <outlet property="rightBarButtonItem" destination="3A6-su-Rt4" id="rfa-85-pkg"/>
                         <outlet property="shareBarButtonItem" destination="qGb-nS-tZb" id="gCw-ak-QJZ"/>
+                        <segue destination="2lA-Rk-AW1" kind="show" identifier="showThirdViewController" id="xNs-jl-7Eg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nWC-a3-bCM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1791" y="68"/>
+        </scene>
+        <!--ThirdViewController-->
+        <scene sceneID="j9e-Uf-yXX">
+            <objects>
+                <viewController title="ThirdViewController" id="2lA-Rk-AW1" customClass="ThirdViewController" customModule="MyAlbum" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="NtW-vA-WU8">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AVt-iH-aeq">
+                                <rect key="frame" x="0.0" y="813" width="414" height="49"/>
+                                <items>
+                                    <barButtonItem systemItem="action" id="Q3U-HP-LwZ"/>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="BSi-YR-7f9"/>
+                                    <barButtonItem title="🖤" id="da8-5W-Lnb"/>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="AOJ-lQ-hD2"/>
+                                    <barButtonItem systemItem="trash" id="hYd-f4-eXA"/>
+                                </items>
+                            </toolbar>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="1nT-Aq-1nJ"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="AVt-iH-aeq" firstAttribute="leading" secondItem="1nT-Aq-1nJ" secondAttribute="leading" id="MGW-J5-m1O"/>
+                            <constraint firstItem="AVt-iH-aeq" firstAttribute="trailing" secondItem="1nT-Aq-1nJ" secondAttribute="trailing" id="MtH-f0-VKl"/>
+                            <constraint firstItem="AVt-iH-aeq" firstAttribute="bottom" secondItem="1nT-Aq-1nJ" secondAttribute="bottom" id="PYx-Of-20R"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="Cfw-Au-lQ4">
+                        <nil key="title"/>
+                        <view key="titleView" contentMode="scaleToFill" id="OYv-Qy-7Pi">
+                            <rect key="frame" x="207" y="22" width="0.0" height="0.0"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="UMw-Cn-c09">
+                                    <rect key="frame" x="-21" y="-21" width="44.5" height="35"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MYC-wV-gMe">
+                                            <rect key="frame" x="0.0" y="0.0" width="44.5" height="20.5"/>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="65V-54-JFg">
+                                            <rect key="frame" x="7" y="20.5" width="31" height="14.5"/>
+                                            <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
+                                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </stackView>
+                            </subviews>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        </view>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="titleLabel" destination="MYC-wV-gMe" id="p7i-ej-Hd9"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dPK-wM-HzD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2687" y="68"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Cgi-Ge-eyR">
