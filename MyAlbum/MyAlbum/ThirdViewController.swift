@@ -68,6 +68,10 @@ class ThirdViewController: UIViewController, UIScrollViewDelegate, PHPhotoLibrar
             self.favoriteBarButtonItem.title = "❤️"
         }
     }
+    // MARK: - Delete Photo
+    @IBAction func touchDeleteBarButtonItem(_ sender: Any) {
+        PHPhotoLibrary.shared().performChanges({ PHAssetChangeRequest.deleteAssets([self.asset!] as NSArray) }, completionHandler: nil)
+    }
     // MARK: - Set navigationItem Title Text
     func setNavigationItemTitleText() {
         let dateFormatter: DateFormatter = {
@@ -94,7 +98,13 @@ class ThirdViewController: UIViewController, UIScrollViewDelegate, PHPhotoLibrar
         guard let change = changeInstance.changeDetails(for: asset) else {
             return
         }
-        self.asset = change.objectAfterChanges
+        if change.objectWasDeleted {
+            OperationQueue.main.addOperation {
+                self.navigationController?.popViewController(animated: true)
+            }
+        } else {
+            self.asset = change.objectAfterChanges
+        }
     }
     /*
     // MARK: - Navigation
