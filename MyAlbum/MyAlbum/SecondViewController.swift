@@ -8,7 +8,7 @@
 import UIKit
 import Photos
 
-class SecondViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
+class SecondViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, PHPhotoLibraryChangeObserver {
     // MARK: - Properties
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var rightBarButtonItem: UIBarButtonItem!
@@ -21,10 +21,8 @@ class SecondViewController: UIViewController, UICollectionViewDataSource, UIColl
     var navigationTitle: String?
     var cellIdentifier: String = "secondCell"
     var fetchResult: PHFetchResult<PHAsset>?
-    var selectCount = 0
     var selectBool = false
-    var selectedCell = Set<IndexPath>()
-    var selectedCellImageInfo = Set<String?>()
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -53,19 +51,18 @@ class SecondViewController: UIViewController, UICollectionViewDataSource, UIColl
             self.deletePhotoBarButtonItem.isEnabled = false
             // 선택 관련 상태 초기화
             initCellStatus()
-            selectedCell.removeAll()
-            selectedCellImageInfo.removeAll()
-            selectCount = 0
         }
     }
     // MARK: - Init Cell Status
     func initCellStatus() {
-        for indexPath in selectedCell {
-            guard let cell = collectionView.cellForItem(at: indexPath) as? SecondCollectionViewCell else {
-                return
+        if let indexPaths = self.collectionView.indexPathsForSelectedItems {
+            for indexPath in indexPaths {
+                guard let cell = collectionView.cellForItem(at: indexPath) as? SecondCollectionViewCell else {
+                    return
+                }
+                cell.isSelected = false
+                cell.setDeselectedStatus()
             }
-            cell.isSelected = false
-            cell.setDeselectedStatus()
         }
     }
     // MARK: - Set Photos Order
@@ -101,8 +98,14 @@ class SecondViewController: UIViewController, UICollectionViewDataSource, UIColl
     
     func importUIImageFromPHAsset() -> [UIImage] {
         var selectedImages = [UIImage]()
-        for localIdentifier in selectedCellImageInfo {
-            guard let localIdentifier = localIdentifier else {
+        guard let indexPaths = self.collectionView.indexPathsForSelectedItems else {
+            return selectedImages
+        }
+        for indexPath in indexPaths {
+            guard let cell = self.collectionView.cellForItem(at: indexPath) as? SecondCollectionViewCell else {
+                continue
+            }
+            guard let localIdentifier = cell.localIdentifier else {
                 continue
             }
             guard let asset = PHAsset.fetchAssets(withLocalIdentifiers: [localIdentifier], options: nil).firstObject else {
@@ -118,6 +121,25 @@ class SecondViewController: UIViewController, UICollectionViewDataSource, UIColl
         print(selectedImages)
         return selectedImages
     }
+    // MARK: - Delete Selected Photos
+    @IBAction func pressUpDeletePhotoBarItemButton(_ sender: Any) {
+        // 선택한 사진 삭제
+        
+        // 선택 해제
+    }
+    // MARK: - PHPhotoLibraryChangeObserver
+    func photoLibraryDidChange(_ changeInstance: PHChange) {
+        if let fetchResult = fetchResult {
+            guard let changes = changeInstance.changeDetails(for: fetchResult) else {
+                return
+            }
+            self.fetchResult = changes.fetchResultAfterChanges
+        }
+        OperationQueue.main.addOperation {
+            self.collectionView.reloadData()
+        }
+    }
+    
     // MARK: - Collection View Data Source
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return self.fetchResult?.count ?? 0
@@ -144,24 +166,18 @@ class SecondViewController: UIViewController, UICollectionViewDataSource, UIColl
         return selectBool
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        guard let cell = collectionView.cellForItem(at: indexPath) as? SecondCollectionViewCell else {
+        guard let cell = collectionView.cellForItem(at: indexPath) as? SecondCollectionViewCell, let count = self.collectionView.indexPathsForSelectedItems?.count else {
             return
         }
-        selectedCell.insert(indexPath)
-        selectedCellImageInfo.insert(cell.localIdentifier)
         cell.setSelectedStatus()
-        selectCount += 1
-        self.navigationItem.title = "\(selectCount)장 선택"
+        self.navigationItem.title = "\(count)장 선택"
     }
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
-        guard let cell = collectionView.cellForItem(at: indexPath) as? SecondCollectionViewCell else {
+        guard let cell = collectionView.cellForItem(at: indexPath) as? SecondCollectionViewCell, let count = self.collectionView.indexPathsForSelectedItems?.count else {
             return
         }
-        selectedCell.remove(indexPath)
-        selectedCellImageInfo.remove(cell.localIdentifier)
         cell.setDeselectedStatus()
-        selectCount -= 1
-        self.navigationItem.title = selectCount == 0 ? "항목 선택" : "\(selectCount)장 선택"
+        self.navigationItem.title = count == 0 ? "항목 선택" : "\(count)장 선택"
     }
     // MARK: - Collection View Flow Layout
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
