@@ -8,11 +8,13 @@
 import UIKit
 import Photos
 
-class ThirdViewController: UIViewController, UIScrollViewDelegate {
+class ThirdViewController: UIViewController, UIScrollViewDelegate, PHPhotoLibraryChangeObserver {
     // MARK: - Properties
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var subtitleLabel: UILabel!
-    @IBOutlet weak var toolbar: UIToolbar!
+    @IBOutlet weak var shareBarButtonItem: UIBarButtonItem!
+    @IBOutlet weak var favoriteBarButtonItem: UIBarButtonItem!
+    @IBOutlet weak var deleteBarButtonItem: UIBarButtonItem!
     @IBOutlet weak var imageView: UIImageView!
     var localIdentifier: String!
     var asset: PHAsset!
@@ -28,26 +30,43 @@ class ThirdViewController: UIViewController, UIScrollViewDelegate {
             return
         }
         asset = targetAsset
+        PHPhotoLibrary.shared().register(self)
         setNavigationItemTitleText()
         setImageViewImage()
+        setFavoriteBarButtomItemStatus()
+    }
+    deinit {
+        PHPhotoLibrary.shared().unregisterChangeObserver(self)
     }
     // MARK: - Set ImageView And ScrollViewDelegate
     func setImageViewImage() {
         PHImageManager.default().requestImage(for: asset, targetSize: CGSize(width: asset.pixelWidth, height: asset.pixelHeight), contentMode: .aspectFill, options: nil, resultHandler: { image, _ in self.imageView.image = image })
     }
     @IBAction func scrollViewGestureRecognizer(_ sender: UITapGestureRecognizer) {
-        guard let isNavigationBarHidden = self.navigationController?.isNavigationBarHidden else {
+        guard let isNavigationBarHidden = self.navigationController?.isNavigationBarHidden, let isToolbarHidden = self.navigationController?.isToolbarHidden else {
             return
         }
         self.navigationController?.isNavigationBarHidden = isNavigationBarHidden ? false : true
-        self.toolbar.isHidden = toolbar.isHidden ? false : true
+        self.navigationController?.setToolbarHidden(!isToolbarHidden, animated: false)
     }
     func viewForZooming(in scrollView: UIScrollView) -> UIView? {
         return self.imageView
     }
     func scrollViewDidZoom(_ scrollView: UIScrollView) {
         self.navigationController?.isNavigationBarHidden = true
-        self.toolbar.isHidden = true
+        self.navigationController?.setToolbarHidden(true, animated: false)
+    }
+    // MARK: - Set Favorite Status
+    func setFavoriteBarButtomItemStatus() {
+        self.favoriteBarButtonItem.title = asset.isFavorite ? "❤️" : "🖤"
+    }
+    @IBAction func touchFavoriteBarButtonItem(_ sender: Any) {
+        PHPhotoLibrary.shared().performChanges({ PHAssetChangeRequest(for: self.asset).isFavorite = !self.asset.isFavorite}, completionHandler: nil)
+        if self.favoriteBarButtonItem.title == "❤️" {
+            self.favoriteBarButtonItem.title = "🖤"
+        } else {
+            self.favoriteBarButtonItem.title = "❤️"
+        }
     }
     // MARK: - Set navigationItem Title Text
     func setNavigationItemTitleText() {
@@ -70,7 +89,13 @@ class ThirdViewController: UIViewController, UIScrollViewDelegate {
         self.titleLabel.text = dateFormatter.string(from: assetDateInfo)
         self.subtitleLabel.text = timeFormatter.string(from: assetDateInfo)
     }
-
+    // MARK: - PHPhotoLibraryChangeObserver
+    func photoLibraryDidChange(_ changeInstance: PHChange) {
+        guard let change = changeInstance.changeDetails(for: asset) else {
+            return
+        }
+        self.asset = change.objectAfterChanges
+    }
     /*
     // MARK: - Navigation
 

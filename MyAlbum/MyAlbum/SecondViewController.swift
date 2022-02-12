@@ -22,7 +22,7 @@ class SecondViewController: UIViewController, UICollectionViewDataSource, UIColl
     var cellIdentifier: String = "secondCell"
     var fetchResult: PHFetchResult<PHAsset>?
 
-
+    // MARK: - viewDidLoad()
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -31,6 +31,7 @@ class SecondViewController: UIViewController, UICollectionViewDataSource, UIColl
         self.collectionView.allowsMultipleSelection = true
         findTargetCollection()
         PHPhotoLibrary.shared().register(self)
+        self.navigationController?.setToolbarHidden(false, animated: false)
     }
     
     // MARK: - Right Bar Button Item Action

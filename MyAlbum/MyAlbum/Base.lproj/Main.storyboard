@@ -18,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="MfO-yn-6BK">
-                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="MBS-PL-oqU">
                                     <size key="itemSize" width="150" height="236"/>
@@ -104,28 +104,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EmU-SF-ImD">
-                                <rect key="frame" x="0.0" y="813" width="414" height="49"/>
-                                <items>
-                                    <barButtonItem enabled="NO" systemItem="action" id="qGb-nS-tZb">
-                                        <connections>
-                                            <action selector="pressUpShareBarItemButton:" destination="OtD-5s-Z76" id="WeU-46-HMF"/>
-                                        </connections>
-                                    </barButtonItem>
-                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="Bor-0I-fW1"/>
-                                    <barButtonItem title="최신순" id="hfQ-nA-a7O">
-                                        <connections>
-                                            <action selector="pressUpPhotoOrderBarItemButton:" destination="OtD-5s-Z76" id="ETh-Sa-jr2"/>
-                                        </connections>
-                                    </barButtonItem>
-                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="5K7-2x-5uv"/>
-                                    <barButtonItem enabled="NO" systemItem="trash" id="bwg-iA-w2S">
-                                        <connections>
-                                            <action selector="pressUpDeletePhotoBarItemButton:" destination="OtD-5s-Z76" id="KTt-z0-Lza"/>
-                                        </connections>
-                                    </barButtonItem>
-                                </items>
-                            </toolbar>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="fLl-dY-Grh">
                                 <rect key="frame" x="0.0" y="88" width="414" height="725"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -168,15 +146,32 @@
                         <viewLayoutGuide key="safeArea" id="7xo-2e-EDT"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="EmU-SF-ImD" firstAttribute="bottom" secondItem="7xo-2e-EDT" secondAttribute="bottom" id="176-eR-vSV"/>
+                            <constraint firstItem="fLl-dY-Grh" firstAttribute="top" secondItem="7xo-2e-EDT" secondAttribute="top" id="JTb-7e-Bos"/>
                             <constraint firstItem="fLl-dY-Grh" firstAttribute="top" secondItem="7xo-2e-EDT" secondAttribute="top" id="TZX-eZ-egS"/>
-                            <constraint firstItem="EmU-SF-ImD" firstAttribute="trailing" secondItem="7xo-2e-EDT" secondAttribute="trailing" id="Uj4-UD-w40"/>
+                            <constraint firstItem="7xo-2e-EDT" firstAttribute="bottom" secondItem="fLl-dY-Grh" secondAttribute="bottom" id="Xpp-jn-EOB"/>
                             <constraint firstItem="7xo-2e-EDT" firstAttribute="trailing" secondItem="fLl-dY-Grh" secondAttribute="trailing" id="cEg-Z2-1Qx"/>
-                            <constraint firstItem="EmU-SF-ImD" firstAttribute="top" secondItem="fLl-dY-Grh" secondAttribute="bottom" id="l6i-8N-UaK"/>
                             <constraint firstItem="fLl-dY-Grh" firstAttribute="leading" secondItem="7xo-2e-EDT" secondAttribute="leading" id="nTL-5D-8BK"/>
-                            <constraint firstItem="EmU-SF-ImD" firstAttribute="leading" secondItem="7xo-2e-EDT" secondAttribute="leading" id="ssV-eH-JLy"/>
                         </constraints>
                     </view>
+                    <toolbarItems>
+                        <barButtonItem enabled="NO" systemItem="action" id="qGb-nS-tZb">
+                            <connections>
+                                <action selector="pressUpShareBarItemButton:" destination="OtD-5s-Z76" id="WeU-46-HMF"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="Bor-0I-fW1"/>
+                        <barButtonItem title="최신순" id="hfQ-nA-a7O">
+                            <connections>
+                                <action selector="pressUpPhotoOrderBarItemButton:" destination="OtD-5s-Z76" id="ETh-Sa-jr2"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="5K7-2x-5uv"/>
+                        <barButtonItem enabled="NO" systemItem="trash" id="bwg-iA-w2S">
+                            <connections>
+                                <action selector="pressUpDeletePhotoBarItemButton:" destination="OtD-5s-Z76" id="KTt-z0-Lza"/>
+                            </connections>
+                        </barButtonItem>
+                    </toolbarItems>
                     <navigationItem key="navigationItem" id="JRH-4F-bKb">
                         <barButtonItem key="rightBarButtonItem" title="선택" id="3A6-su-Rt4">
                             <connections>
@@ -184,6 +179,7 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="collectionView" destination="fLl-dY-Grh" id="rAH-CY-02t"/>
                         <outlet property="deletePhotoBarButtonItem" destination="bwg-iA-w2S" id="cEu-Fj-3A1"/>
@@ -205,16 +201,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AVt-iH-aeq">
-                                <rect key="frame" x="0.0" y="813" width="414" height="49"/>
-                                <items>
-                                    <barButtonItem systemItem="action" id="Q3U-HP-LwZ"/>
-                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="BSi-YR-7f9"/>
-                                    <barButtonItem title="🖤" id="da8-5W-Lnb"/>
-                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="AOJ-lQ-hD2"/>
-                                    <barButtonItem systemItem="trash" id="hYd-f4-eXA"/>
-                                </items>
-                            </toolbar>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" maximumZoomScale="3" translatesAutoresizingMaskIntoConstraints="NO" id="rV6-Vc-8vG">
                                 <rect key="frame" x="0.0" y="88" width="414" height="725"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -241,12 +227,18 @@
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="1nT-Aq-1nJ"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="AVt-iH-aeq" firstAttribute="leading" secondItem="1nT-Aq-1nJ" secondAttribute="leading" id="MGW-J5-m1O"/>
-                            <constraint firstItem="AVt-iH-aeq" firstAttribute="trailing" secondItem="1nT-Aq-1nJ" secondAttribute="trailing" id="MtH-f0-VKl"/>
-                            <constraint firstItem="AVt-iH-aeq" firstAttribute="bottom" secondItem="1nT-Aq-1nJ" secondAttribute="bottom" id="PYx-Of-20R"/>
-                        </constraints>
                     </view>
+                    <toolbarItems>
+                        <barButtonItem systemItem="action" id="Q3U-HP-LwZ"/>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="BSi-YR-7f9"/>
+                        <barButtonItem title="🖤" id="da8-5W-Lnb">
+                            <connections>
+                                <action selector="touchFavoriteBarButtonItem:" destination="2lA-Rk-AW1" id="gHi-80-Lws"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="AOJ-lQ-hD2"/>
+                        <barButtonItem systemItem="trash" id="hYd-f4-eXA"/>
+                    </toolbarItems>
                     <navigationItem key="navigationItem" id="Cfw-Au-lQ4">
                         <nil key="title"/>
                         <view key="titleView" contentMode="scaleToFill" id="Xon-qz-Ar7">
@@ -275,11 +267,14 @@
                             </constraints>
                         </view>
                     </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="deleteBarButtonItem" destination="hYd-f4-eXA" id="VHd-9y-90x"/>
+                        <outlet property="favoriteBarButtonItem" destination="da8-5W-Lnb" id="1Ws-vF-ZG2"/>
                         <outlet property="imageView" destination="gq9-w1-a4W" id="QQS-K7-Qma"/>
+                        <outlet property="shareBarButtonItem" destination="Q3U-HP-LwZ" id="mN7-Dx-G0M"/>
                         <outlet property="subtitleLabel" destination="j41-F8-G0a" id="DmH-dP-k2Q"/>
                         <outlet property="titleLabel" destination="6BP-ih-Mq8" id="e7E-e6-KD1"/>
-                        <outlet property="toolbar" destination="AVt-iH-aeq" id="t6I-aI-XZy"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dPK-wM-HzD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -294,13 +289,17 @@
         <!--Navigation Controller-->
         <scene sceneID="Cgi-Ge-eyR">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="iNp-YD-Ppg" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" toolbarHidden="NO" id="iNp-YD-Ppg" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="4Ve-9Q-jSz">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="OGH-A6-dFy">
+                        <rect key="frame" x="0.0" y="813" width="414" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </toolbar>
                     <connections>
                         <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="DzV-bh-IdP"/>
                     </connections>

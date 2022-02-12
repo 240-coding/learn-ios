@@ -27,6 +27,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         self.navigationItem.title = "앨범"
         self.requestPhotoLibraryAccess()
         PHPhotoLibrary.shared().register(self)
+        self.navigationController?.setToolbarHidden(true, animated: false)
     }
 
     // MARK: - Collection View Data Source
