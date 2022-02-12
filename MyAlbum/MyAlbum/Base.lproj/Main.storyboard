@@ -215,20 +215,36 @@
                                     <barButtonItem systemItem="trash" id="hYd-f4-eXA"/>
                                 </items>
                             </toolbar>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="fpA-M6-Qnn">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" maximumZoomScale="3" translatesAutoresizingMaskIntoConstraints="NO" id="rV6-Vc-8vG">
                                 <rect key="frame" x="0.0" y="88" width="414" height="725"/>
-                            </imageView>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="gq9-w1-a4W">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="725"/>
+                                        <gestureRecognizers/>
+                                    </imageView>
+                                </subviews>
+                                <gestureRecognizers/>
+                                <constraints>
+                                    <constraint firstItem="bzn-AK-hTn" firstAttribute="trailing" secondItem="gq9-w1-a4W" secondAttribute="trailing" id="21f-Al-wEA"/>
+                                    <constraint firstItem="gq9-w1-a4W" firstAttribute="top" secondItem="bzn-AK-hTn" secondAttribute="top" id="G3Z-yg-TBI"/>
+                                    <constraint firstItem="bzn-AK-hTn" firstAttribute="bottom" secondItem="gq9-w1-a4W" secondAttribute="bottom" id="ON1-7U-jEY"/>
+                                    <constraint firstItem="gq9-w1-a4W" firstAttribute="leading" secondItem="bzn-AK-hTn" secondAttribute="leading" id="mtN-YL-hs7"/>
+                                </constraints>
+                                <viewLayoutGuide key="contentLayoutGuide" id="q7e-Fh-bhS"/>
+                                <viewLayoutGuide key="frameLayoutGuide" id="bzn-AK-hTn"/>
+                                <connections>
+                                    <outlet property="delegate" destination="2lA-Rk-AW1" id="zn1-V5-OWD"/>
+                                    <outletCollection property="gestureRecognizers" destination="HcY-Gb-YzG" appends="YES" id="XNB-z6-QLR"/>
+                                </connections>
+                            </scrollView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="1nT-Aq-1nJ"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="1nT-Aq-1nJ" firstAttribute="trailing" secondItem="fpA-M6-Qnn" secondAttribute="trailing" id="9vb-iw-VxZ"/>
                             <constraint firstItem="AVt-iH-aeq" firstAttribute="leading" secondItem="1nT-Aq-1nJ" secondAttribute="leading" id="MGW-J5-m1O"/>
                             <constraint firstItem="AVt-iH-aeq" firstAttribute="trailing" secondItem="1nT-Aq-1nJ" secondAttribute="trailing" id="MtH-f0-VKl"/>
                             <constraint firstItem="AVt-iH-aeq" firstAttribute="bottom" secondItem="1nT-Aq-1nJ" secondAttribute="bottom" id="PYx-Of-20R"/>
-                            <constraint firstItem="AVt-iH-aeq" firstAttribute="top" secondItem="fpA-M6-Qnn" secondAttribute="bottom" id="VQG-Bh-FUC"/>
-                            <constraint firstItem="fpA-M6-Qnn" firstAttribute="top" secondItem="1nT-Aq-1nJ" secondAttribute="top" id="Xo5-La-AoD"/>
-                            <constraint firstItem="fpA-M6-Qnn" firstAttribute="leading" secondItem="1nT-Aq-1nJ" secondAttribute="leading" id="r9s-PZ-Zv1"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Cfw-Au-lQ4">
@@ -260,13 +276,20 @@
                         </view>
                     </navigationItem>
                     <connections>
+                        <outlet property="imageView" destination="gq9-w1-a4W" id="QQS-K7-Qma"/>
                         <outlet property="subtitleLabel" destination="j41-F8-G0a" id="DmH-dP-k2Q"/>
                         <outlet property="titleLabel" destination="6BP-ih-Mq8" id="e7E-e6-KD1"/>
+                        <outlet property="toolbar" destination="AVt-iH-aeq" id="t6I-aI-XZy"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dPK-wM-HzD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="HcY-Gb-YzG">
+                    <connections>
+                        <action selector="scrollViewGestureRecognizer:" destination="2lA-Rk-AW1" id="YYm-Qv-cke"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="2687" y="68"/>
+            <point key="canvasLocation" x="2686.9565217391305" y="67.633928571428569"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Cgi-Ge-eyR">

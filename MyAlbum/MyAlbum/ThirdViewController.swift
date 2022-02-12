@@ -8,11 +8,14 @@
 import UIKit
 import Photos
 
-class ThirdViewController: UIViewController {
+class ThirdViewController: UIViewController, UIScrollViewDelegate {
     // MARK: - Properties
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var subtitleLabel: UILabel!
+    @IBOutlet weak var toolbar: UIToolbar!
+    @IBOutlet weak var imageView: UIImageView!
     var localIdentifier: String!
+    var asset: PHAsset!
     var navigationItemTitle: String?
     var navigationItemSubtitle: String?
     
@@ -21,7 +24,30 @@ class ThirdViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        guard let targetAsset = PHAsset.fetchAssets(withLocalIdentifiers: [localIdentifier], options: nil).firstObject else {
+            return
+        }
+        asset = targetAsset
         setNavigationItemTitleText()
+        setImageViewImage()
+    }
+    // MARK: - Set ImageView And ScrollViewDelegate
+    func setImageViewImage() {
+        PHImageManager.default().requestImage(for: asset, targetSize: CGSize(width: asset.pixelWidth, height: asset.pixelHeight), contentMode: .aspectFill, options: nil, resultHandler: { image, _ in self.imageView.image = image })
+    }
+    @IBAction func scrollViewGestureRecognizer(_ sender: UITapGestureRecognizer) {
+        guard let isNavigationBarHidden = self.navigationController?.isNavigationBarHidden else {
+            return
+        }
+        self.navigationController?.isNavigationBarHidden = isNavigationBarHidden ? false : true
+        self.toolbar.isHidden = toolbar.isHidden ? false : true
+    }
+    func viewForZooming(in scrollView: UIScrollView) -> UIView? {
+        return self.imageView
+    }
+    func scrollViewDidZoom(_ scrollView: UIScrollView) {
+        self.navigationController?.isNavigationBarHidden = true
+        self.toolbar.isHidden = true
     }
     // MARK: - Set navigationItem Title Text
     func setNavigationItemTitleText() {
@@ -38,7 +64,7 @@ class ThirdViewController: UIViewController {
             formatter.pmSymbol = "PM"
             return formatter
         }()
-        guard let assetDateInfo = PHAsset.fetchAssets(withLocalIdentifiers: [localIdentifier], options: nil).firstObject?.creationDate else {
+        guard let assetDateInfo = asset.creationDate else {
             return
         }
         self.titleLabel.text = dateFormatter.string(from: assetDateInfo)
