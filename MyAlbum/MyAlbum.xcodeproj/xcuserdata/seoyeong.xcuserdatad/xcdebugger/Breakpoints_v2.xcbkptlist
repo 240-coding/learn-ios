@@ -14,8 +14,8 @@
             filePath = "MyAlbum/SecondViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "54"
-            endingLineNumber = "54"
+            startingLineNumber = "51"
+            endingLineNumber = "51"
             landmarkName = "pressRightBarButtonItem(_:)"
             landmarkType = "7">
          </BreakpointContent>

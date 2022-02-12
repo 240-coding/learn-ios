@@ -8,13 +8,28 @@
 import UIKit
 
 class ThirdViewController: UIViewController {
+    // MARK: - Properties
     @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var subtitleLabel: UILabel!
+    var navigationItemTitle: String?
+    var navigationItemSubtitle: String?
+    
+    // MARK: - viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        setNavigationItemTitleText()
     }
-    
+    // MARK: - Set navigationItem Title Text
+    func setNavigationItemTitleText() {
+        guard let title = navigationItemTitle, let subtitle = navigationItemSubtitle else {
+            print("실패")
+            return
+        }
+        self.titleLabel.text = title
+        self.subtitleLabel.text = subtitle
+    }
 
     /*
     // MARK: - Navigation

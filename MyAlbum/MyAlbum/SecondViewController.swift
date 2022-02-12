@@ -21,7 +21,6 @@ class SecondViewController: UIViewController, UICollectionViewDataSource, UIColl
     var navigationTitle: String?
     var cellIdentifier: String = "secondCell"
     var fetchResult: PHFetchResult<PHAsset>?
-    var selectBool = false
 
 
     override func viewDidLoad() {
@@ -40,14 +39,12 @@ class SecondViewController: UIViewController, UICollectionViewDataSource, UIColl
             self.navigationItem.hidesBackButton = true
             self.rightBarButtonItem.title = "취소"
             self.navigationItem.title = "항목 선택"
-            selectBool = true
             self.shareBarButtonItem.isEnabled = true
             self.deletePhotoBarButtonItem.isEnabled = true
         } else {
             self.navigationItem.hidesBackButton = false
             self.rightBarButtonItem.title = "선택"
             self.navigationItem.title = self.navigationTitle
-            selectBool = false
             self.shareBarButtonItem.isEnabled = false
             self.deletePhotoBarButtonItem.isEnabled = false
             // 선택 관련 상태 초기화
@@ -136,7 +133,6 @@ class SecondViewController: UIViewController, UICollectionViewDataSource, UIColl
         self.navigationItem.hidesBackButton = false
         self.rightBarButtonItem.title = "선택"
         self.navigationItem.title = self.navigationTitle
-        selectBool = false
         self.shareBarButtonItem.isEnabled = false
         self.deletePhotoBarButtonItem.isEnabled = false
         initCellStatus()
@@ -173,26 +169,14 @@ class SecondViewController: UIViewController, UICollectionViewDataSource, UIColl
         return cell
     }
     // MARK: - Collection View Delegate
-//    func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
-//        return selectBool
-//    }
-//    func collectionView(_ collectionView: UICollectionView, shouldDeselectItemAt indexPath: IndexPath) -> Bool {
-//        return selectBool
-//    }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        guard let cell = collectionView.cellForItem(at: indexPath) as? SecondCollectionViewCell else {
-            return
-        }
         if self.rightBarButtonItem.title == "취소" {
-            print(cell.isSelected)
-            guard let count = self.collectionView.indexPathsForSelectedItems?.count else {
+            guard let cell = collectionView.cellForItem(at: indexPath) as? SecondCollectionViewCell, let count = self.collectionView.indexPathsForSelectedItems?.count else {
                 return
             }
             cell.setSelectedStatus()
             self.navigationItem.title = "\(count)장 선택"
         } else {
-            self.collectionView.deselectItem(at: indexPath, animated: false)
-            print(cell.isSelected)
             self.performSegue(withIdentifier: "showThirdViewController", sender: nil)
         }
     }
@@ -227,16 +211,40 @@ class SecondViewController: UIViewController, UICollectionViewDataSource, UIColl
         } else {
             fatalError()
         }
-        print(fetchResult)
     }
-    /*
     // MARK: - Navigation
-
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
+        let dateFormatter: DateFormatter = {
+            let formatter: DateFormatter = DateFormatter()
+            formatter.dateFormat = "yyyy-MM-dd"
+            formatter.timeZone = TimeZone(identifier: "UTC")
+            return formatter
+        }()
+        let timeFormatter: DateFormatter = {
+            let formatter: DateFormatter = DateFormatter()
+            formatter.dateFormat = "a hh:mm:ss"
+            formatter.amSymbol = "AM"
+            formatter.pmSymbol = "PM"
+            return formatter
+        }()
+        guard let nextViewController = segue.destination as? ThirdViewController, let indexPath = self.collectionView.indexPathsForSelectedItems?.first else {
+            return
+        }
+        guard let cell = self.collectionView.cellForItem(at: indexPath) as? SecondCollectionViewCell else {
+            return
+        }
+        guard let localIdentifier = cell.localIdentifier else {
+            return
+        }
+        guard let assetDateInfo = PHAsset.fetchAssets(withLocalIdentifiers: [localIdentifier], options: nil).firstObject?.creationDate else {
+            return
+        }
+        nextViewController.navigationItemTitle = dateFormatter.string(from: assetDateInfo)
+        nextViewController.navigationItemSubtitle = timeFormatter.string(from: assetDateInfo)
+        self.collectionView.deselectItem(at: indexPath, animated: false)
     }
-    */
 
 }
