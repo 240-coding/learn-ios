@@ -6,11 +6,13 @@
 //
 
 import UIKit
+import Photos
 
 class ThirdViewController: UIViewController {
     // MARK: - Properties
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var subtitleLabel: UILabel!
+    var localIdentifier: String!
     var navigationItemTitle: String?
     var navigationItemSubtitle: String?
     
@@ -23,12 +25,24 @@ class ThirdViewController: UIViewController {
     }
     // MARK: - Set navigationItem Title Text
     func setNavigationItemTitleText() {
-        guard let title = navigationItemTitle, let subtitle = navigationItemSubtitle else {
-            print("실패")
+        let dateFormatter: DateFormatter = {
+            let formatter: DateFormatter = DateFormatter()
+            formatter.dateFormat = "yyyy-MM-dd"
+            formatter.timeZone = TimeZone(identifier: "UTC")
+            return formatter
+        }()
+        let timeFormatter: DateFormatter = {
+            let formatter: DateFormatter = DateFormatter()
+            formatter.dateFormat = "a hh:mm:ss"
+            formatter.amSymbol = "AM"
+            formatter.pmSymbol = "PM"
+            return formatter
+        }()
+        guard let assetDateInfo = PHAsset.fetchAssets(withLocalIdentifiers: [localIdentifier], options: nil).firstObject?.creationDate else {
             return
         }
-        self.titleLabel.text = title
-        self.subtitleLabel.text = subtitle
+        self.titleLabel.text = dateFormatter.string(from: assetDateInfo)
+        self.subtitleLabel.text = timeFormatter.string(from: assetDateInfo)
     }
 
     /*

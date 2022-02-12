@@ -213,23 +213,7 @@ class SecondViewController: UIViewController, UICollectionViewDataSource, UIColl
         }
     }
     // MARK: - Navigation
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-        let dateFormatter: DateFormatter = {
-            let formatter: DateFormatter = DateFormatter()
-            formatter.dateFormat = "yyyy-MM-dd"
-            formatter.timeZone = TimeZone(identifier: "UTC")
-            return formatter
-        }()
-        let timeFormatter: DateFormatter = {
-            let formatter: DateFormatter = DateFormatter()
-            formatter.dateFormat = "a hh:mm:ss"
-            formatter.amSymbol = "AM"
-            formatter.pmSymbol = "PM"
-            return formatter
-        }()
         guard let nextViewController = segue.destination as? ThirdViewController, let indexPath = self.collectionView.indexPathsForSelectedItems?.first else {
             return
         }
@@ -239,11 +223,7 @@ class SecondViewController: UIViewController, UICollectionViewDataSource, UIColl
         guard let localIdentifier = cell.localIdentifier else {
             return
         }
-        guard let assetDateInfo = PHAsset.fetchAssets(withLocalIdentifiers: [localIdentifier], options: nil).firstObject?.creationDate else {
-            return
-        }
-        nextViewController.navigationItemTitle = dateFormatter.string(from: assetDateInfo)
-        nextViewController.navigationItemSubtitle = timeFormatter.string(from: assetDateInfo)
+        nextViewController.localIdentifier = localIdentifier
         self.collectionView.deselectItem(at: indexPath, animated: false)
     }
 
