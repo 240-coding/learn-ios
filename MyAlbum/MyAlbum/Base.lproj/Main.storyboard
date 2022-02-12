@@ -229,7 +229,11 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <toolbarItems>
-                        <barButtonItem systemItem="action" id="Q3U-HP-LwZ"/>
+                        <barButtonItem systemItem="action" id="Q3U-HP-LwZ">
+                            <connections>
+                                <action selector="touchShareBarButtonItem:" destination="2lA-Rk-AW1" id="Bpt-PJ-E0o"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="BSi-YR-7f9"/>
                         <barButtonItem title="🖤" id="da8-5W-Lnb">
                             <connections>

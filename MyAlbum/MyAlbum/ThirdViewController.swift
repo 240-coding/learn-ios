@@ -72,6 +72,15 @@ class ThirdViewController: UIViewController, UIScrollViewDelegate, PHPhotoLibrar
     @IBAction func touchDeleteBarButtonItem(_ sender: Any) {
         PHPhotoLibrary.shared().performChanges({ PHAssetChangeRequest.deleteAssets([self.asset!] as NSArray) }, completionHandler: nil)
     }
+    // MARK: - Share Photo
+    @IBAction func touchShareBarButtonItem(_ sender: Any) {
+        guard let image = self.imageView.image else {
+            return
+        }
+        let activityItems: [UIImage] = [image]
+        let activityViewController = UIActivityViewController(activityItems: activityItems, applicationActivities: nil)
+        self.present(activityViewController, animated: true, completion: nil)
+    }
     // MARK: - Set navigationItem Title Text
     func setNavigationItemTitleText() {
         let dateFormatter: DateFormatter = {

@@ -27,9 +27,10 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         self.navigationItem.title = "앨범"
         self.requestPhotoLibraryAccess()
         PHPhotoLibrary.shared().register(self)
+    }
+    override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.setToolbarHidden(true, animated: false)
     }
-
     // MARK: - Collection View Data Source
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return self.fetchResult?.count ?? 0
