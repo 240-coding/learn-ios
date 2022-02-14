@@ -1,4 +1,7 @@
 import Foundation
 
-var a = [Int]()
-"123".reversed()
+var a = Set<Int>()
+a.insert(1)
+a.insert(5)
+
+print(a.sorted())
