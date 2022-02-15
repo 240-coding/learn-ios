@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		896ABADC27BB83B200F32EFB /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 896ABADB27BB83B200F32EFB /* Request.swift */; };
 		89FDBCCE27BA7F0600583116 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89FDBCCD27BA7F0600583116 /* AppDelegate.swift */; };
 		89FDBCD027BA7F0600583116 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89FDBCCF27BA7F0600583116 /* SceneDelegate.swift */; };
 		89FDBCD227BA7F0600583116 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89FDBCD127BA7F0600583116 /* ViewController.swift */; };
@@ -17,6 +18,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		896ABADB27BB83B200F32EFB /* Request.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
 		89FDBCCA27BA7F0600583116 /* Networking.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Networking.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		89FDBCCD27BA7F0600583116 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		89FDBCCF27BA7F0600583116 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -58,6 +60,7 @@
 		89FDBCCC27BA7F0600583116 /* Networking */ = {
 			isa = PBXGroup;
 			children = (
+				896ABADB27BB83B200F32EFB /* Request.swift */,
 				89FDBCCD27BA7F0600583116 /* AppDelegate.swift */,
 				89FDBCCF27BA7F0600583116 /* SceneDelegate.swift */,
 				89FDBCD127BA7F0600583116 /* ViewController.swift */,
@@ -143,6 +146,7 @@
 			files = (
 				89FDBCD227BA7F0600583116 /* ViewController.swift in Sources */,
 				89FDBCCE27BA7F0600583116 /* AppDelegate.swift in Sources */,
+				896ABADC27BB83B200F32EFB /* Request.swift in Sources */,
 				89FDBCD027BA7F0600583116 /* SceneDelegate.swift in Sources */,
 				89FDBCE227BA7FD600583116 /* Model.swift in Sources */,
 			);
