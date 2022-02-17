@@ -7,6 +7,7 @@
 
 import Foundation
 
+// MARK: - MovieList
 struct MovieListAPIResponse: Codable {
     let movies: [MovieList]
 }
@@ -20,6 +21,10 @@ struct MovieList: Codable {
     var grade: Int
     var reservationGrade: Int
     var userRating: Double
+    
+    var movieInfo: String {
+        return "\(reservationGrade)위(\(userRating)) / \(reservationRate)%"
+    }
     
     enum CodingKeys: String, CodingKey {
         case title

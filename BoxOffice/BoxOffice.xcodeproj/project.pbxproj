@@ -16,6 +16,9 @@
 		896ABAFE27BBA59600F32EFB /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 896ABAFD27BBA59600F32EFB /* Request.swift */; };
 		896ABB0027BBB69D00F32EFB /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 896ABAFF27BBB69D00F32EFB /* Model.swift */; };
 		896ABB0227BBC1EE00F32EFB /* MovieListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 896ABB0127BBC1EE00F32EFB /* MovieListTableViewCell.swift */; };
+		896ABB0427BBF42F00F32EFB /* MovieListCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 896ABB0327BBF42F00F32EFB /* MovieListCollectionViewCell.swift */; };
+		896ABB0627BBF49900F32EFB /* CollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 896ABB0527BBF49900F32EFB /* CollectionViewController.swift */; };
+		896C057A27BE68BF001964E2 /* TableSecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 896C057927BE68BF001964E2 /* TableSecondViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +33,9 @@
 		896ABAFD27BBA59600F32EFB /* Request.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
 		896ABAFF27BBB69D00F32EFB /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		896ABB0127BBC1EE00F32EFB /* MovieListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListTableViewCell.swift; sourceTree = "<group>"; };
+		896ABB0327BBF42F00F32EFB /* MovieListCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListCollectionViewCell.swift; sourceTree = "<group>"; };
+		896ABB0527BBF49900F32EFB /* CollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewController.swift; sourceTree = "<group>"; };
+		896C057927BE68BF001964E2 /* TableSecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableSecondViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,9 +71,12 @@
 				896ABAE927BB8FF500F32EFB /* AppDelegate.swift */,
 				896ABAEB27BB8FF500F32EFB /* SceneDelegate.swift */,
 				896ABAED27BB8FF500F32EFB /* ViewController.swift */,
+				896C057927BE68BF001964E2 /* TableSecondViewController.swift */,
+				896ABB0527BBF49900F32EFB /* CollectionViewController.swift */,
 				896ABAFD27BBA59600F32EFB /* Request.swift */,
 				896ABAFF27BBB69D00F32EFB /* Model.swift */,
 				896ABAEF27BB8FF500F32EFB /* Main.storyboard */,
+				896ABB0327BBF42F00F32EFB /* MovieListCollectionViewCell.swift */,
 				896ABB0127BBC1EE00F32EFB /* MovieListTableViewCell.swift */,
 				896ABAF227BB8FF700F32EFB /* Assets.xcassets */,
 				896ABAF427BB8FF700F32EFB /* LaunchScreen.storyboard */,
@@ -147,9 +156,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				896C057A27BE68BF001964E2 /* TableSecondViewController.swift in Sources */,
+				896ABB0427BBF42F00F32EFB /* MovieListCollectionViewCell.swift in Sources */,
 				896ABB0027BBB69D00F32EFB /* Model.swift in Sources */,
 				896ABAEE27BB8FF500F32EFB /* ViewController.swift in Sources */,
 				896ABAFE27BBA59600F32EFB /* Request.swift in Sources */,
+				896ABB0627BBF49900F32EFB /* CollectionViewController.swift in Sources */,
 				896ABAEA27BB8FF500F32EFB /* AppDelegate.swift in Sources */,
 				896ABB0227BBC1EE00F32EFB /* MovieListTableViewCell.swift in Sources */,
 				896ABAEC27BB8FF500F32EFB /* SceneDelegate.swift in Sources */,

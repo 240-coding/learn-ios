@@ -24,6 +24,10 @@ class ViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(didReceiveMovieListNotification(_:)), name: DidReceiveMovieListNotification, object: nil)
     }
 
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
+    
     @objc func didReceiveMovieListNotification(_ noti: Notification) {
         guard let movieList: [MovieList] = noti.userInfo?["movieList"] as? [MovieList] else { return }
         
