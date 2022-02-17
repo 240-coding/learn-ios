@@ -6,14 +6,16 @@
 //
 
 import Foundation
+import UIKit
 
+let appDelegate = UIApplication.shared.delegate as! AppDelegate
 // MARK: - Notification Name
 let DidReceiveMovieListNotification: Notification.Name = Notification.Name("DidReceiveMovieList")
 // MARK: - Base URL
 let baseUrl = "https://connect-boxoffice.run.goorm.io/"
 
-func requestMovieList(_ order: String) {
-    let listUrl = "movies?order_type=" + order
+func requestMovieList() {
+    let listUrl = "movies?order_type=" + appDelegate.listOrder
     guard let url: URL = URL(string: baseUrl + listUrl) else { return }
     
     let session: URLSession = URLSession(configuration: .default)
