@@ -88,6 +88,13 @@ class ViewController: UIViewController {
         
         self.present(alertController, animated: true, completion: nil)
     }
+    // MARK: - Navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let cell = sender as? MovieListTableViewCell else { return }
+        guard let nextViewController = segue.destination as? SecondViewController else { return }
+        
+        nextViewController.movieId = cell.id
+    }
 }
 
 // MARK: - UITableViewDataSource
@@ -103,6 +110,7 @@ extension ViewController: UITableViewDataSource {
         cell.reservationGrade.text = String(movie.reservationGrade)
         cell.reservationRate.text = String(movie.reservationRate)
         cell.date.text = movie.date
+        cell.id = movie.id
         
         DispatchQueue.global().async {
             guard let imageURL: URL = URL(string: movie.thumb) else { return }

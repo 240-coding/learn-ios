@@ -16,7 +16,8 @@ class MovieListTableViewCell: UITableViewCell {
     @IBOutlet weak var reservationGrade: UILabel!
     @IBOutlet weak var reservationRate: UILabel!
     @IBOutlet weak var date: UILabel!
-    
+    var id: String?
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

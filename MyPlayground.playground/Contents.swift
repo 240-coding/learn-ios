@@ -1,7 +1,7 @@
 import Foundation
 
-print(String(2|12|2<<(5-1), radix: 2))
+let dartResult = "1S2D*3T"
+let numberList = dartResult.split(whereSeparator: {$0.isLetter || $0 == "#" || $0 == "*"})
+let letterList = dartResult.split(whereSeparator: {$0.isNumber})
 
-print(String(2|12|1<<5, radix: 2))
-let a = [1, 2, 3, 4]
-print(a[1...3])
+print(zip(numberList, letterList))

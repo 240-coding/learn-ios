@@ -13,8 +13,5 @@ class MovieListCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var grade: UIImageView!
     @IBOutlet weak var movieInfo: UILabel!
     @IBOutlet weak var date: UILabel!
-    
-    override func awakeFromNib() {
-        self.poster.heightAnchor
-    }
+    var id: String?
 }

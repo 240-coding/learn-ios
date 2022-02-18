@@ -87,18 +87,18 @@ class CollectionViewController: UIViewController {
         
         self.present(alertController, animated: true, completion: nil)
     }
-}
-
-    /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
+        guard let cell = sender as? MovieListCollectionViewCell else { return }
+        guard let nextViewController = segue.destination as? SecondViewController else { return }
+        
+        nextViewController.movieId = cell.id
     }
-    */
-
+}
 // MARK: - UICollectionViewDataSource
 extension CollectionViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -114,6 +114,7 @@ extension CollectionViewController: UICollectionViewDataSource {
         cell.grade.image = UIImage(named: "ic_" + String(movie.grade))
         cell.movieInfo.text = movie.movieInfo
         cell.date.text = movie.date
+        cell.id = movie.id
         
         DispatchQueue.global().async {
             guard let imageURL: URL = URL(string: movie.thumb) else { return }
