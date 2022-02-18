@@ -21,12 +21,14 @@ class SecondViewController: UIViewController {
         if let movieId = movieId {
             requestMovieInfo(movieId)
         }
+        self.navigationController?.navigationBar.tintColor = .white
     }
     // MARK: - Notification Observer
     @objc func didReceiveMovieInfoNotification(_ noti: Notification) {
         guard let movieInfo = noti.userInfo?["movieInfo"] as? MovieInfo else { return }
         self.movieInfo = movieInfo
         DispatchQueue.main.async {
+            self.navigationItem.title = self.movieInfo?.title ?? ""
             self.collectionView.reloadData()
         }
     }
