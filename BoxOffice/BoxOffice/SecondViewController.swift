@@ -12,7 +12,8 @@ class SecondViewController: UIViewController {
     var movieId: String?
     var movieInfo: MovieInfo?
     let cellIdentifier = ["firstInfoCell", "secondInfoCell", "thirdInfoCell", "fourthInfoCell"]
-
+    let headerIdentifier = "titleHeader"
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -111,6 +112,24 @@ extension SecondViewController: UICollectionViewDataSource {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellIdentifier[1], for: indexPath) as? SecondInfoCollectionViewCell else { fatalError("셀 로드 오류")}
         return cell
     }
+    // MARK: - Set Header
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        guard let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: headerIdentifier, for: indexPath) as? TitleCollectionReusableView else { fatalError("헤더 로드 오류")}
+        if indexPath.section == 1 {
+            headerView.title.text = "줄거리"
+            headerView.btn.isHidden = true
+            return headerView
+        } else if indexPath.section == 2 {
+            headerView.title.text = "감독/출연"
+            headerView.btn.isHidden = true
+            return headerView
+        } else if indexPath.section == 3 {
+            headerView.title.text = "한줄평"
+            headerView.btn.isHidden = false
+            return headerView
+        }
+        return headerView
+    }
 }
 // MARK: - Collection View Flow Layout
 extension SecondViewController: UICollectionViewDelegateFlowLayout {
@@ -120,6 +139,13 @@ extension SecondViewController: UICollectionViewDelegateFlowLayout {
             return CGSize(width: width, height: 300)
         } else {
             return CGSize(width: width, height: 500)
+        }
+    }
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+        if section == 0 {
+            return CGSize(width: 0, height: 0)
+        } else {
+            return CGSize(width: view.frame.width, height: 40)
         }
     }
 }
