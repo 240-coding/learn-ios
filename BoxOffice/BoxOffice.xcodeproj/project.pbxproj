@@ -23,6 +23,7 @@
 		89DC11BD27C11F2700CD3238 /* SecondInfoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89DC11BC27C11F2700CD3238 /* SecondInfoCollectionViewCell.swift */; };
 		89DC11BF27C132E600CD3238 /* TitleCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89DC11BE27C132E600CD3238 /* TitleCollectionReusableView.swift */; };
 		89DC11C127C144A100CD3238 /* ThirdInfoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89DC11C027C144A100CD3238 /* ThirdInfoCollectionViewCell.swift */; };
+		89DC11C327C14CE400CD3238 /* FourthInfoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89DC11C227C14CE400CD3238 /* FourthInfoCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +45,7 @@
 		89DC11BC27C11F2700CD3238 /* SecondInfoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondInfoCollectionViewCell.swift; sourceTree = "<group>"; };
 		89DC11BE27C132E600CD3238 /* TitleCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleCollectionReusableView.swift; sourceTree = "<group>"; };
 		89DC11C027C144A100CD3238 /* ThirdInfoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdInfoCollectionViewCell.swift; sourceTree = "<group>"; };
+		89DC11C227C14CE400CD3238 /* FourthInfoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FourthInfoCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,6 +90,7 @@
 				89C2A8B327BFBEFB007C44F8 /* FirstInfoCollectionViewCell.swift */,
 				89DC11BC27C11F2700CD3238 /* SecondInfoCollectionViewCell.swift */,
 				89DC11C027C144A100CD3238 /* ThirdInfoCollectionViewCell.swift */,
+				89DC11C227C14CE400CD3238 /* FourthInfoCollectionViewCell.swift */,
 				896ABB0327BBF42F00F32EFB /* MovieListCollectionViewCell.swift */,
 				896ABB0127BBC1EE00F32EFB /* MovieListTableViewCell.swift */,
 				896ABAF227BB8FF700F32EFB /* Assets.xcassets */,
@@ -176,6 +179,7 @@
 				896ABAFE27BBA59600F32EFB /* Request.swift in Sources */,
 				896ABB0627BBF49900F32EFB /* CollectionViewController.swift in Sources */,
 				896ABAEA27BB8FF500F32EFB /* AppDelegate.swift in Sources */,
+				89DC11C327C14CE400CD3238 /* FourthInfoCollectionViewCell.swift in Sources */,
 				89C2A8B427BFBEFB007C44F8 /* FirstInfoCollectionViewCell.swift in Sources */,
 				89DC11BF27C132E600CD3238 /* TitleCollectionReusableView.swift in Sources */,
 				89DC11BD27C11F2700CD3238 /* SecondInfoCollectionViewCell.swift in Sources */,

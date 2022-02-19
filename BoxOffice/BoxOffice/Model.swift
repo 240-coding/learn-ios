@@ -71,3 +71,24 @@ struct MovieInfo: Codable {
         case id
     }
 }
+// MARK: - Comments
+struct CommentsAPIResponse: Codable {
+    let comments: [Comments]
+}
+struct Comments: Codable {
+    let rating: Double
+    let timestamp: Double
+    let writer: String
+    let movieId: String
+    let contents: String
+    let id: String
+    
+    enum CodingKeys: String, CodingKey {
+        case rating
+        case timestamp
+        case writer
+        case movieId = "movie_id"
+        case contents
+        case id
+    }
+}

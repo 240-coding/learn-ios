@@ -12,6 +12,7 @@ let appDelegate = UIApplication.shared.delegate as! AppDelegate
 // MARK: - Notification Name
 let DidReceiveMovieListNotification: Notification.Name = Notification.Name("DidReceiveMovieList")
 let DidReceiveMovieInfoNotification: Notification.Name = Notification.Name("DidReceiveMovieInfoNotification")
+let DidReceiveCommentsNoficiation: Notification.Name = Notification.Name("DidReceiveCommentsNoficiation")
 // MARK: - Base URL
 let baseUrl = "https://connect-boxoffice.run.goorm.io/"
 // MARK: - Movie List
@@ -59,6 +60,30 @@ func requestMovieInfo(_ id: String) {
             let movieInfo: MovieInfo = try JSONDecoder().decode(MovieInfo.self, from: data)
             NotificationCenter.default.post(name: DidReceiveMovieInfoNotification, object: nil, userInfo: ["movieInfo":movieInfo])
         } catch(let err) {
+            print(String(describing: err))
+        }
+    }
+    dataTask.resume()
+}
+// MARK: - Comments
+func requestComments(_ movieId: String) {
+    let commentsUrl = "comments?movie_id=" + movieId
+    guard let url: URL = URL(string: baseUrl + commentsUrl) else { return }
+    let session: URLSession = URLSession(configuration: .default)
+    let dataTask: URLSessionDataTask = session.dataTask(with: url) {
+        (data: Data?, response: URLResponse?, error: Error?) in
+        
+        if let error = error {
+            print(error.localizedDescription)
+            return
+        }
+        guard let data = data else {
+            return
+        }
+        do {
+            let comments: CommentsAPIResponse = try JSONDecoder().decode(CommentsAPIResponse.self, from: data)
+            NotificationCenter.default.post(name: DidReceiveCommentsNoficiation, object: nil, userInfo: ["comments":comments.comments])
+        } catch (let err) {
             print(String(describing: err))
         }
     }
