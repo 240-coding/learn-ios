@@ -79,6 +79,7 @@ extension SecondViewController: UICollectionViewDataSource {
             }
         }
     }
+    // MARK: - cellForItemAt
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if indexPath.section == 0 {
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellIdentifier[0], for: indexPath) as? FirstInfoCollectionViewCell else { fatalError("셀 로드 오류") }
@@ -106,6 +107,13 @@ extension SecondViewController: UICollectionViewDataSource {
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellIdentifier[1], for: indexPath) as? SecondInfoCollectionViewCell else { fatalError("셀 로드 오류")}
             guard let movieInfo = self.movieInfo else { return cell }
             cell.synopsis.text = movieInfo.synopsis
+            
+            return cell
+        } else if indexPath.section == 2 {
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellIdentifier[2], for: indexPath) as? ThirdInfoCollectionViewCell else { fatalError("셀 로드 오류")}
+            guard let movieInfo = self.movieInfo else { return cell }
+            cell.director.text = movieInfo.director
+            cell.actor.text = movieInfo.actor
             
             return cell
         }
@@ -137,8 +145,12 @@ extension SecondViewController: UICollectionViewDelegateFlowLayout {
         let width = view.frame.width
         if indexPath.section == 0 {
             return CGSize(width: width, height: 300)
-        } else {
+        } else if indexPath.section == 1 {
             return CGSize(width: width, height: 500)
+        } else if indexPath.section == 2 {
+            return CGSize(width: width, height: 100)
+        } else {
+            return CGSize(width: width, height: 150)
         }
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
