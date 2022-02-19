@@ -44,17 +44,14 @@ class SecondViewController: UIViewController {
             self.collectionView.reloadData()
         }
     }
-    
-
-    /*
     // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        guard let tempViewController = segue.destination as? UINavigationController, let nextViewController = tempViewController.topViewController as? ThirdViewController else { return }
+        nextViewController.movieTitle = self.movieInfo?.title
+        nextViewController.movieGrade = self.movieInfo?.grade
+        nextViewController.commentInfo.movieId = self.movieId
+        nextViewController.commentInfo.rating = 10
     }
-    */
 }
 // MARK: - Collection View Data Source
 extension SecondViewController: UICollectionViewDataSource {
