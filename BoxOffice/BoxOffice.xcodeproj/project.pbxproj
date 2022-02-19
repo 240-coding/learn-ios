@@ -20,6 +20,7 @@
 		896ABB0627BBF49900F32EFB /* CollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 896ABB0527BBF49900F32EFB /* CollectionViewController.swift */; };
 		896C057A27BE68BF001964E2 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 896C057927BE68BF001964E2 /* SecondViewController.swift */; };
 		89C2A8B427BFBEFB007C44F8 /* FirstInfoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89C2A8B327BFBEFB007C44F8 /* FirstInfoCollectionViewCell.swift */; };
+		89DC11BD27C11F2700CD3238 /* SecondInfoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89DC11BC27C11F2700CD3238 /* SecondInfoCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,7 @@
 		896ABB0527BBF49900F32EFB /* CollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewController.swift; sourceTree = "<group>"; };
 		896C057927BE68BF001964E2 /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
 		89C2A8B327BFBEFB007C44F8 /* FirstInfoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstInfoCollectionViewCell.swift; sourceTree = "<group>"; };
+		89DC11BC27C11F2700CD3238 /* SecondInfoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondInfoCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +81,7 @@
 				896ABAFF27BBB69D00F32EFB /* Model.swift */,
 				896ABAEF27BB8FF500F32EFB /* Main.storyboard */,
 				89C2A8B327BFBEFB007C44F8 /* FirstInfoCollectionViewCell.swift */,
+				89DC11BC27C11F2700CD3238 /* SecondInfoCollectionViewCell.swift */,
 				896ABB0327BBF42F00F32EFB /* MovieListCollectionViewCell.swift */,
 				896ABB0127BBC1EE00F32EFB /* MovieListTableViewCell.swift */,
 				896ABAF227BB8FF700F32EFB /* Assets.xcassets */,
@@ -167,6 +170,7 @@
 				896ABB0627BBF49900F32EFB /* CollectionViewController.swift in Sources */,
 				896ABAEA27BB8FF500F32EFB /* AppDelegate.swift in Sources */,
 				89C2A8B427BFBEFB007C44F8 /* FirstInfoCollectionViewCell.swift in Sources */,
+				89DC11BD27C11F2700CD3238 /* SecondInfoCollectionViewCell.swift in Sources */,
 				896ABB0227BBC1EE00F32EFB /* MovieListTableViewCell.swift in Sources */,
 				896ABAEC27BB8FF500F32EFB /* SceneDelegate.swift in Sources */,
 			);

@@ -11,7 +11,7 @@ class SecondViewController: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
     var movieId: String?
     var movieInfo: MovieInfo?
-    var firstCellIdentifier = "firstInfoCell"
+    let cellIdentifier = ["firstInfoCell", "secondInfoCell", "thirdInfoCell", "fourthInfoCell"]
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,6 +50,10 @@ extension SecondViewController: UICollectionViewDataSource {
         return 1
     }
     
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 4
+    }
+    
     func convertNumberFormat(_ num: Int) -> String {
         let numberFormatter = NumberFormatter()
         numberFormatter.numberStyle = .decimal
@@ -75,26 +79,47 @@ extension SecondViewController: UICollectionViewDataSource {
         }
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: firstCellIdentifier, for: indexPath) as? FirstInfoCollectionViewCell else { fatalError("셀 로드 오류") }
-        guard let movieInfo = self.movieInfo else { return cell }
-        cell.title.text = movieInfo.title
-        cell.date.text = movieInfo.date
-        cell.detailInfo.text = "\(movieInfo.genre)/\(movieInfo.duration)분"
-        cell.grade.image = UIImage(named: "ic_" + String(movieInfo.grade))
-        cell.reservationRate.text = String(movieInfo.reservationRate)
-        cell.userRate.text = String(movieInfo.userRating)
-        cell.audience.text = convertNumberFormat(movieInfo.audience)
-        setStarImage(cell.rateStars, movieInfo.userRating)
-        
-        DispatchQueue.global().async {
-            guard let imageURL: URL = URL(string: movieInfo.image) else { return }
-            guard let imageData: Data = try? Data(contentsOf: imageURL) else { return }
+        if indexPath.section == 0 {
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellIdentifier[0], for: indexPath) as? FirstInfoCollectionViewCell else { fatalError("셀 로드 오류") }
+            guard let movieInfo = self.movieInfo else { return cell }
+            cell.title.text = movieInfo.title
+            cell.date.text = movieInfo.date
+            cell.detailInfo.text = "\(movieInfo.genre)/\(movieInfo.duration)분"
+            cell.grade.image = UIImage(named: "ic_" + String(movieInfo.grade))
+            cell.reservationRate.text = String(movieInfo.reservationRate)
+            cell.userRate.text = String(movieInfo.userRating)
+            cell.audience.text = convertNumberFormat(movieInfo.audience)
+            setStarImage(cell.rateStars, movieInfo.userRating)
             
-            DispatchQueue.main.async {
-                cell.poster.image = UIImage(data: imageData)
+            DispatchQueue.global().async {
+                guard let imageURL: URL = URL(string: movieInfo.image) else { return }
+                guard let imageData: Data = try? Data(contentsOf: imageURL) else { return }
+                
+                DispatchQueue.main.async {
+                    cell.poster.image = UIImage(data: imageData)
+                }
             }
+            
+            return cell
+        } else if indexPath.section == 1 {
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellIdentifier[1], for: indexPath) as? SecondInfoCollectionViewCell else { fatalError("셀 로드 오류")}
+            guard let movieInfo = self.movieInfo else { return cell }
+            cell.synopsis.text = movieInfo.synopsis
+            
+            return cell
         }
-        
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellIdentifier[1], for: indexPath) as? SecondInfoCollectionViewCell else { fatalError("셀 로드 오류")}
         return cell
+    }
+}
+// MARK: - Collection View Flow Layout
+extension SecondViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let width = view.frame.width
+        if indexPath.section == 0 {
+            return CGSize(width: width, height: 300)
+        } else {
+            return CGSize(width: width, height: 500)
+        }
     }
 }
