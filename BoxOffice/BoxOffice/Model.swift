@@ -94,10 +94,10 @@ struct Comments: Codable {
 }
 // MARK: - User Comment
 struct UserComment: Codable {
-    var rating: Double?
-    var writer: String?
-    var movieId: String?
-    var contents: String?
+    var rating: Double!
+    var writer: String!
+    var movieId: String!
+    var contents: String!
     
     enum CodingKeys: String, CodingKey {
         case rating

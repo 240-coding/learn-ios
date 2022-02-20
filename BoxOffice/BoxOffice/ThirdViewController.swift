@@ -9,11 +9,14 @@ import UIKit
 
 class ThirdViewController: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
+    let appDelegate = UIApplication.shared.delegate as! AppDelegate
     let cellIdentifier = ["firstCommentCell", "secondCommentCell"]
     var movieTitle: String?
     var movieGrade: Int?
     var stars: Array<UIImageView> = []
     var userRate: UILabel!
+    var userName: UITextField!
+    var userComment: UITextView!
     var commentInfo = UserComment()
     
     override func viewDidLoad() {
@@ -21,24 +24,43 @@ class ThirdViewController: UIViewController {
 
         // Do any additional setup after loading the view.
         self.navigationController?.navigationBar.tintColor = .white
+        NotificationCenter.default.addObserver(self, selector: #selector(didPostCommentNotification), name: DidPostCommentNotification, object: nil)
     }
-    
+    // MARK: - Notification Observer
+    @objc func didPostCommentNotification() {
+        DispatchQueue.main.async {
+            self.dismiss(animated: true, completion: {
+                NotificationCenter.default.post(name: ShouldReloadComments, object: nil)
+            })
+        }
+    }
+    // MARK: - @IBAction Methods
     @IBAction func pressCancelBarButtonItem() {
+        self.appDelegate.username = self.userName.text ?? ""
         self.dismiss(animated: true, completion: nil)
     }
     @IBAction func pressDoneBarButtonItem() {
-        print("Done")
+        self.appDelegate.username = self.userName.text ?? ""
+        if let writer = userName.text, let comment = userComment.text {
+            if writer.isEmpty || comment.isEmpty {
+                self.showAlertController()
+            } else {
+                commentInfo.writer = writer
+                commentInfo.contents = comment
+                postComment(commentInfo)
+            }
+        }
     }
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    @IBAction func tapView(_ sender: UITapGestureRecognizer) {
+        self.view.endEditing(true)
     }
-    */
-
+    // MARK: - Alert Controller
+    func showAlertController() {
+        let alertController = UIAlertController(title: "한줄평 등록", message: "닉네임 및 한줄평을 작성하셔야 합니다.", preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "확인", style: .default, handler: nil)
+        alertController.addAction(okAction)
+        self.present(alertController, animated: true, completion: nil)
+    }
 }
 // MARK: - Collection View Data Source
 extension ThirdViewController: UICollectionViewDataSource {
@@ -81,7 +103,9 @@ extension ThirdViewController: UICollectionViewDataSource {
             return cell
             
         } else {
-            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellIdentifier[0], for: indexPath) as? FirstCommentCollectionViewCell else { fatalError("셀 로드 오류") }
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellIdentifier[1], for: indexPath) as? SecondCommentCollectionViewCell else { fatalError("셀 로드 오류") }
+            self.userName = cell.nicknameTextField
+            self.userComment = cell.commentTextView
             return cell
         }
     }

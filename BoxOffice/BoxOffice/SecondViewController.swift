@@ -22,6 +22,7 @@ class SecondViewController: UIViewController {
         // Do any additional setup after loading the view.
         NotificationCenter.default.addObserver(self, selector: #selector(didReceiveMovieInfoNotification(_:)), name: DidReceiveMovieInfoNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(didReceiveCommentsNoficiation(_:)), name: DidReceiveCommentsNoficiation, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(shouldReloadComments), name: ShouldReloadComments, object: nil)
         if let movieId = movieId {
             requestMovieInfo(movieId)
             requestComments(movieId)
@@ -41,7 +42,14 @@ class SecondViewController: UIViewController {
         guard let comments = noti.userInfo?["comments"] as? [Comments] else { return }
         self.comments = comments
         DispatchQueue.main.async {
-            self.collectionView.reloadData()
+            self.collectionView.reloadSections(IndexSet(3...3))
+        }
+    }
+    @objc func shouldReloadComments() {
+        print("Second-OK")
+        print("RELOAD")
+        if let movieId = self.movieId {
+            requestComments(movieId)
         }
     }
     // MARK: - Navigation

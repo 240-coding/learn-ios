@@ -358,14 +358,14 @@
                                                                         </imageView>
                                                                     </subviews>
                                                                 </stackView>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e0q-dU-6bn">
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e0q-dU-6bn">
                                                                     <rect key="frame" x="0.0" y="33" width="31" height="14.5"/>
                                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                     <size key="shadowOffset" width="0.0" height="0.0"/>
                                                                 </label>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YEm-fV-la2">
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YEm-fV-la2">
                                                                     <rect key="frame" x="0.0" y="55.5" width="35.5" height="17"/>
                                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                                     <nil key="textColor"/>
@@ -892,6 +892,55 @@
                                             <outletCollection property="starRate" destination="fe2-MB-YDH" collectionClass="NSMutableArray" id="ED7-tz-CJG"/>
                                         </connections>
                                     </collectionViewCell>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="secondCommentCell" id="7G3-MM-hou" customClass="SecondCommentCollectionViewCell" customModule="BoxOffice" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="175" width="414" height="599"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="yTk-ZI-uLD">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="599"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="닉네임을 입력해주세요." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Igf-ca-QgX">
+                                                    <rect key="frame" x="15" y="10" width="384" height="34"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits"/>
+                                                </textField>
+                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="wUL-dv-d0S">
+                                                    <rect key="frame" x="15" y="54" width="384" height="535"/>
+                                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                    <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                    <connections>
+                                                        <outlet property="delegate" destination="7G3-MM-hou" id="uRc-7Q-GcW"/>
+                                                    </connections>
+                                                </textView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="한줄평을 작성해주세요." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iyt-tD-MCN">
+                                                    <rect key="frame" x="25" y="64" width="120" height="16"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
+                                                    <color key="textColor" systemColor="systemGray3Color"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="wUL-dv-d0S" firstAttribute="top" secondItem="Igf-ca-QgX" secondAttribute="bottom" constant="10" id="LsB-hO-2FX"/>
+                                                <constraint firstItem="Igf-ca-QgX" firstAttribute="leading" secondItem="yTk-ZI-uLD" secondAttribute="leading" constant="15" id="R8z-F4-zB1"/>
+                                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="iyt-tD-MCN" secondAttribute="trailing" constant="20" symbolic="YES" id="UVq-xP-lWJ"/>
+                                                <constraint firstItem="wUL-dv-d0S" firstAttribute="leading" secondItem="yTk-ZI-uLD" secondAttribute="leading" constant="15" id="bEC-xo-e46"/>
+                                                <constraint firstAttribute="bottom" secondItem="wUL-dv-d0S" secondAttribute="bottom" constant="10" id="g7G-2h-oY0"/>
+                                                <constraint firstAttribute="trailing" secondItem="Igf-ca-QgX" secondAttribute="trailing" constant="15" id="ncE-7a-nCi"/>
+                                                <constraint firstItem="iyt-tD-MCN" firstAttribute="leading" secondItem="wUL-dv-d0S" secondAttribute="leading" constant="10" id="sVz-53-fCJ"/>
+                                                <constraint firstAttribute="trailing" secondItem="wUL-dv-d0S" secondAttribute="trailing" constant="15" id="sf4-rD-gDp"/>
+                                                <constraint firstItem="iyt-tD-MCN" firstAttribute="top" secondItem="wUL-dv-d0S" secondAttribute="top" constant="10" id="u8c-1o-bfR"/>
+                                                <constraint firstItem="Igf-ca-QgX" firstAttribute="top" secondItem="yTk-ZI-uLD" secondAttribute="top" constant="10" id="uhH-Uj-0bu"/>
+                                            </constraints>
+                                        </collectionViewCellContentView>
+                                        <size key="customSize" width="414" height="599"/>
+                                        <connections>
+                                            <outlet property="commentPlaceholder" destination="iyt-tD-MCN" id="aoO-RI-Nxa"/>
+                                            <outlet property="commentTextView" destination="wUL-dv-d0S" id="eff-XA-Vz6"/>
+                                            <outlet property="nicknameTextField" destination="Igf-ca-QgX" id="mtg-Sf-Mkj"/>
+                                        </connections>
+                                    </collectionViewCell>
                                 </cells>
                                 <connections>
                                     <outlet property="dataSource" destination="Had-Ua-RYb" id="JTm-TA-pcr"/>
@@ -901,12 +950,16 @@
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="HGa-WG-7d0"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="Uto-ZQ-9q9" firstAttribute="top" secondItem="HGa-WG-7d0" secondAttribute="top" id="4JJ-dH-rY3"/>
                             <constraint firstItem="Uto-ZQ-9q9" firstAttribute="leading" secondItem="HGa-WG-7d0" secondAttribute="leading" id="JJr-YC-Qbe"/>
                             <constraint firstItem="HGa-WG-7d0" firstAttribute="trailing" secondItem="Uto-ZQ-9q9" secondAttribute="trailing" id="gQw-48-gVN"/>
                             <constraint firstItem="HGa-WG-7d0" firstAttribute="bottom" secondItem="Uto-ZQ-9q9" secondAttribute="bottom" id="xoP-RF-CtE"/>
                         </constraints>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="zsI-aK-xQO" appends="YES" id="RVw-L5-ZKQ"/>
+                        </connections>
                     </view>
                     <navigationItem key="navigationItem" title="한줄평 작성" id="ovo-eo-itf">
                         <barButtonItem key="leftBarButtonItem" title="취소" style="plain" id="o3f-4T-mhz">
@@ -925,6 +978,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HPL-BB-ueE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="zsI-aK-xQO">
+                    <connections>
+                        <action selector="tapView:" destination="Had-Ua-RYb" id="adz-tn-c6D"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="4813.04347826087" y="32.8125"/>
         </scene>

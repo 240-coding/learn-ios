@@ -13,6 +13,8 @@ let appDelegate = UIApplication.shared.delegate as! AppDelegate
 let DidReceiveMovieListNotification: Notification.Name = Notification.Name("DidReceiveMovieList")
 let DidReceiveMovieInfoNotification: Notification.Name = Notification.Name("DidReceiveMovieInfoNotification")
 let DidReceiveCommentsNoficiation: Notification.Name = Notification.Name("DidReceiveCommentsNoficiation")
+let DidPostCommentNotification: Notification.Name = Notification.Name("DidPostCommentNotification")
+let ShouldReloadComments: Notification.Name = Notification.Name("ShouldReloadComments")
 // MARK: - Base URL
 let baseUrl = "https://connect-boxoffice.run.goorm.io/"
 // MARK: - Movie List
@@ -88,4 +90,24 @@ func requestComments(_ movieId: String) {
         }
     }
     dataTask.resume()
+}
+// MARK: - Upload Comment
+func postComment(_ userComment: UserComment) {
+    guard let uploadData = try? JSONEncoder().encode(userComment) else { return }
+    
+    guard let url = URL(string: baseUrl + "comment") else { return }
+    var request = URLRequest(url: url)
+    request.httpMethod = "POST"
+    request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+    
+    let task = URLSession.shared.uploadTask(with: request, from: uploadData) {
+        (data, response, error) in
+        if let error = error {
+            print(error.localizedDescription)
+            return
+        }
+        NotificationCenter.default.post(name: DidPostCommentNotification, object: nil)
+        print("Upload Success")
+    }
+    task.resume()
 }
