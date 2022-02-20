@@ -12,6 +12,7 @@ class ViewController: UIViewController {
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var rightBarButtonItem: UIBarButtonItem!
+    let refreshControl = UIRefreshControl()
     var movieList: [MovieList] = []
     let cellIdentifier = "movieListCell"
     
@@ -25,7 +26,20 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view.
         NotificationCenter.default.addObserver(self, selector: #selector(didReceiveMovieListNotification(_:)), name: DidReceiveMovieListNotification, object: nil)
         requestMovieList()
+        initRefreshControl()
 
+    }
+    // MARK: - Refresh Control
+    func initRefreshControl() {
+        refreshControl.endRefreshing()
+        self.tableView.refreshControl = refreshControl
+        refreshControl.addTarget(self, action: #selector(handleRefreshControl), for: .valueChanged)
+    }
+    @objc func handleRefreshControl() {
+        requestMovieList()
+        DispatchQueue.main.async {
+            self.refreshControl.endRefreshing()
+        }
     }
     // MARK: - Set Navigation Item Title
     func setNavigationItemTitle() {

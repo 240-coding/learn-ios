@@ -11,6 +11,7 @@ class CollectionViewController: UIViewController {
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var rightBarItemButton: UIBarButtonItem!
+    let refreshControl = UIRefreshControl()
     var movieList: [MovieList] = []
     let cellIdentifier = "movieListCollectionCell"
     
@@ -25,6 +26,7 @@ class CollectionViewController: UIViewController {
         // Do any additional setup after loading the view.
         NotificationCenter.default.addObserver(self, selector: #selector(didReceiveMovieListNotification(_:)), name: DidReceiveMovieListNotification, object: nil)
         requestMovieList()
+        initRefreshControl()
     }
     // MARK: - Set Navigation Item Title
     func setNavigationItemTitle() {
@@ -36,6 +38,18 @@ class CollectionViewController: UIViewController {
         default:
             self.navigationItem.title = "개봉일순"
         }
+    }
+    // MARK: - Refresh Control
+    func initRefreshControl() {
+        refreshControl.endRefreshing()
+        self.collectionView.refreshControl = refreshControl
+        refreshControl.addTarget(self, action: #selector(handleRefreshControl), for: .valueChanged)
+    }
+    @objc func handleRefreshControl() {
+        DispatchQueue.main.async {
+            self.refreshControl.endRefreshing()
+        }
+        requestMovieList()
     }
     // MARK: - Notification Observer
     @objc func didReceiveMovieListNotification(_ noti: Notification) {
