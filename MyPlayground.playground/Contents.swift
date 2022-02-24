@@ -1,6 +1,7 @@
 import Foundation
 
-let a = "abcdzABCDZ"
-let b = Character("a").asciiValue!
-let c = UnicodeScalar(b)
-print(a.utf8)
+let a = ["cat", "bed", "door"]
+
+let i = "Zbcdefg"
+print(String(i.reversed()))
+q
