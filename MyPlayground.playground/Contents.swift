@@ -1,47 +1,104 @@
-func solution(_ str1:String, _ str2:String) -> Int {
-    var s1 = Array(str1.lowercased())
-    var s2 = Array(str2.lowercased())
-    var set1 = Set<String>()
-    var set2 = Set<String>()
-    var dict1 = [String: Int]()
-    var dict2 = [String: Int]()
+import Foundation
+
+func solution(_ places:[[String]]) -> [Int] {
+    var result = [Int]()
+    var arr = [[Character]]()
+    var shouldExit = false
     
-    // 다중집합 만들기
-    for i in 0..<s1.count-1 {
-        if s1[i].isLetter && s1[i+1].isLetter {
-            let curr = String(s1[i...i+1])
-            set1.insert(curr)
-            dict1[curr] = (dict1[curr] ?? 0) + 1
+    
+    func testOutside(_ curr: [Int], _ target: [Int]) -> Bool {
+        if target[0] < 0 || target[0] > 4 || target[1] < 0 || target[1] > 4 {
+            return true
+        }
+        if arr[target[0]][target[1]] == "P" {
+            let row = (curr[0] + target[0]) / 2
+            let col = (curr[1] + target[1]) / 2
+            return arr[row][col] != "X" ? false : true
+        } else {
+            return true
         }
         
     }
-    for i in 0..<s2.count-1 {
-        if s2[i].isLetter && s2[i+1].isLetter {
-            let curr = String(s2[i...i+1])
-            set2.insert(curr)
-            dict2[curr] = (dict2[curr] ?? 0) + 1
+    
+    func testDiagonalOutside(_ curr: [Int], _ target: [Int]) -> Bool {
+        if target[0] < 0 || target[0] > 4 || target[1] < 0 || target[1] > 4 {
+            return true
         }
-    }
-    // 교집합 찾기
-    var inter = Array(set1.intersection(set2))
-    for str in inter {
-        let count = min(dict1[str]!, dict2[str]!)
-        for i in 1..<count {
-            inter.append(str)
+        if arr[target[0]][target[1]] == "P" {
+            return arr[curr[0]][target[1]] != "X" || arr[target[0]][curr[1]] != "X" ? false : true
+        } else {
+            return true
         }
-    }
-    // 합집합 찾기
-    var union = Array(set1.union(set2))
-    for str in union {
-        let count = max(dict1[str] ?? 0, dict2[str] ?? 0)
-        for i in 1..<count {
-            union.append(str)
-        }
+        
     }
     
-    print(inter.count)
-    print(union.count)
-    return Int((Double(inter.count) / Double(union.count)) * 65536)
+    for place in places {
+        arr = place.map{ Array($0) }
+        print(place)
+        for i in 0..<5 {
+            shouldExit = false
+            for j in 0..<5 {
+                print("\(i), \(j)")
+                if arr[i][j] == "P" {
+                    // 안쪽 부분 검사
+                    if i > 0 {
+                        if arr[i-1][j] == "P" {
+                            print("안쪽1")
+                            result.append(0)
+                            shouldExit = true
+                            break
+                        }
+                    }
+                    if i < 4 {
+                        if arr[i+1][j] == "P" {
+                            print("안쪽2")
+                            result.append(0)
+                            shouldExit = true
+                            break
+                        }
+                    }
+                    if j > 0 {
+                        if arr[i][j-1] == "P" {
+                            print("안쪽3")
+                            result.append(0)
+                            shouldExit = true
+                            break
+                        }
+                    }
+                    if j < 4 {
+                        if arr[i][j+1] == "P" {
+                            print("안쪽4")
+                            result.append(0)
+                            shouldExit = true
+                            break
+                        }
+                    }
+                    // 바깥쪽 부분 검사 - 1
+                    if !testOutside([i, j], [i-2, j]) || !testOutside([i, j], [i+2, j]) || !testOutside([i, j], [i, j-2]) || !testOutside([i, j], [i, j+2]) {
+                        print("바깥1")
+                        result.append(0)
+                        shouldExit = true
+                        break
+                    }
+                    // 바깥쪽 부분 검사 - 2 (대각선)
+                    if !testDiagonalOutside([i, j], [i-1, j-1]) || !testDiagonalOutside([i, j], [i+1, j+1]) || !testDiagonalOutside([i, j], [i-1, j+1]) || !testDiagonalOutside([i, j], [i+1, j-1]) {
+                        print("바깥2")
+                        result.append(0)
+                        shouldExit = true
+                        break
+                    }
+                }
+                
+            }
+            if shouldExit { break }
+        }
+        // 위 검사에서 거리두기 지키지 않은 응시자가 발견되지 않은 경우
+        if !shouldExit { result.append(1) }
+    }
+    
+    return result
 }
+let places = [["POOOP", "OXXOX", "OPXPX", "OOXOX", "POXXP"], ["POOPX", "OXPXP", "PXXXO", "OXXXO", "OOOPP"], ["PXOPX", "OXOXP", "OXPOX", "OXXOP", "PXPOX"], ["OOOXX", "XOOOX", "OOOXX", "OXOOX", "OOOOO"], ["PXPXP", "XPXPX", "PXPXP", "XPXPX", "PXPXP"]]
+//print(places[0].map{ Array($0)})
 
-print(solution("E=M*C^2", "e=m*c^2"))
+print(solution(places))
