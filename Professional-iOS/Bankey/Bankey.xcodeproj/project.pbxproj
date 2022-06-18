@@ -21,6 +21,8 @@
 		89AE7F2627C787B100ED0CD6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 89AE7F2527C787B100ED0CD6 /* Assets.xcassets */; };
 		89AE7F2927C787B100ED0CD6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 89AE7F2727C787B100ED0CD6 /* LaunchScreen.storyboard */; };
 		89AE7F3427C7D30C00ED0CD6 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89AE7F3327C7D30C00ED0CD6 /* LoginView.swift */; };
+		89C58D23285E2B9000F44859 /* ProfileTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89C58D22285E2B9000F44859 /* ProfileTests.swift */; };
+		89C58D25285E2C1100F44859 /* AccountTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89C58D24285E2C1100F44859 /* AccountTests.swift */; };
 		89D73068285CDD3600CAEA36 /* Date+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89D73067285CDD3600CAEA36 /* Date+Utils.swift */; };
 		89D7306A285CE3D600CAEA36 /* AccountSummaryViewController+Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89D73069285CE3D600CAEA36 /* AccountSummaryViewController+Networking.swift */; };
 		89E4364127F0AF4D00952717 /* CurrencyFormatterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89E4364027F0AF4D00952717 /* CurrencyFormatterTests.swift */; };
@@ -59,6 +61,8 @@
 		89AE7F2827C787B100ED0CD6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		89AE7F2A27C787B100ED0CD6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		89AE7F3327C7D30C00ED0CD6 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		89C58D22285E2B9000F44859 /* ProfileTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTests.swift; sourceTree = "<group>"; };
+		89C58D24285E2C1100F44859 /* AccountTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountTests.swift; sourceTree = "<group>"; };
 		89D73067285CDD3600CAEA36 /* Date+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Utils.swift"; sourceTree = "<group>"; };
 		89D73069285CE3D600CAEA36 /* AccountSummaryViewController+Networking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AccountSummaryViewController+Networking.swift"; sourceTree = "<group>"; };
 		89E4363727F0ADFE00952717 /* BankeyUnitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BankeyUnitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -184,10 +188,28 @@
 			path = Login;
 			sourceTree = "<group>";
 		};
+		89C58D20285E2B6500F44859 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				89C58D21285E2B7300F44859 /* AccountSummary */,
+				89E4364027F0AF4D00952717 /* CurrencyFormatterTests.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		89C58D21285E2B7300F44859 /* AccountSummary */ = {
+			isa = PBXGroup;
+			children = (
+				89C58D22285E2B9000F44859 /* ProfileTests.swift */,
+				89C58D24285E2C1100F44859 /* AccountTests.swift */,
+			);
+			path = AccountSummary;
+			sourceTree = "<group>";
+		};
 		89E4363827F0ADFE00952717 /* BankeyUnitTests */ = {
 			isa = PBXGroup;
 			children = (
-				89E4364027F0AF4D00952717 /* CurrencyFormatterTests.swift */,
+				89C58D20285E2B6500F44859 /* Utils */,
 			);
 			path = BankeyUnitTests;
 			sourceTree = "<group>";
@@ -338,6 +360,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				89E4364127F0AF4D00952717 /* CurrencyFormatterTests.swift in Sources */,
+				89C58D25285E2C1100F44859 /* AccountTests.swift in Sources */,
+				89C58D23285E2B9000F44859 /* ProfileTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
