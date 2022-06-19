@@ -10,6 +10,8 @@
 		890D5B2627C9ED7A00D4845B /* OnboardingContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 890D5B2527C9ED7A00D4845B /* OnboardingContainerViewController.swift */; };
 		890D5B2827CA10AF00D4845B /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 890D5B2727CA10AF00D4845B /* OnboardingViewController.swift */; };
 		8912851D27CDBBC300683BCB /* LocalState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8912851C27CDBBC300683BCB /* LocalState.swift */; };
+		895273D1285F6158004F751A /* SkeletonLoadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 895273D0285F6158004F751A /* SkeletonLoadable.swift */; };
+		895273D3285F62D0004F751A /* SkeletonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 895273D2285F62D0004F751A /* SkeletonCell.swift */; };
 		895C3B1627CE54F800DF1FA3 /* UIViewController+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 895C3B1527CE54F800DF1FA3 /* UIViewController+Utils.swift */; };
 		895C3B1827CE56D200DF1FA3 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 895C3B1727CE56D200DF1FA3 /* MainViewController.swift */; };
 		8999CBA628323C36004241A7 /* ShakeyBellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8999CBA528323C36004241A7 /* ShakeyBellView.swift */; };
@@ -48,6 +50,8 @@
 		890D5B2527C9ED7A00D4845B /* OnboardingContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingContainerViewController.swift; sourceTree = "<group>"; };
 		890D5B2727CA10AF00D4845B /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
 		8912851C27CDBBC300683BCB /* LocalState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalState.swift; sourceTree = "<group>"; };
+		895273D0285F6158004F751A /* SkeletonLoadable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkeletonLoadable.swift; sourceTree = "<group>"; };
+		895273D2285F62D0004F751A /* SkeletonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkeletonCell.swift; sourceTree = "<group>"; };
 		895C3B1527CE54F800DF1FA3 /* UIViewController+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Utils.swift"; sourceTree = "<group>"; };
 		895C3B1727CE56D200DF1FA3 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		8999CBA528323C36004241A7 /* ShakeyBellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShakeyBellView.swift; sourceTree = "<group>"; };
@@ -227,6 +231,8 @@
 			isa = PBXGroup;
 			children = (
 				89E5836827EA5B0400AFDF2F /* AccountSummaryCell.swift */,
+				895273D0285F6158004F751A /* SkeletonLoadable.swift */,
+				895273D2285F62D0004F751A /* SkeletonCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -334,6 +340,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				895C3B1627CE54F800DF1FA3 /* UIViewController+Utils.swift in Sources */,
+				895273D3285F62D0004F751A /* SkeletonCell.swift in Sources */,
 				89D73068285CDD3600CAEA36 /* Date+Utils.swift in Sources */,
 				895C3B1827CE56D200DF1FA3 /* MainViewController.swift in Sources */,
 				89AE7F3427C7D30C00ED0CD6 /* LoginView.swift in Sources */,
@@ -351,6 +358,7 @@
 				89A0663727CF276D003365EF /* AccountSummaryViewController.swift in Sources */,
 				89AE7F1D27C787B000ED0CD6 /* AppDelegate.swift in Sources */,
 				890D5B2627C9ED7A00D4845B /* OnboardingContainerViewController.swift in Sources */,
+				895273D1285F6158004F751A /* SkeletonLoadable.swift in Sources */,
 				89D7306A285CE3D600CAEA36 /* AccountSummaryViewController+Networking.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
