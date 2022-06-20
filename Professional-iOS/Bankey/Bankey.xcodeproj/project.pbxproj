@@ -14,6 +14,8 @@
 		895273D3285F62D0004F751A /* SkeletonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 895273D2285F62D0004F751A /* SkeletonCell.swift */; };
 		895C3B1627CE54F800DF1FA3 /* UIViewController+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 895C3B1527CE54F800DF1FA3 /* UIViewController+Utils.swift */; };
 		895C3B1827CE56D200DF1FA3 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 895C3B1727CE56D200DF1FA3 /* MainViewController.swift */; };
+		897DD0062860A2C8006861A6 /* ProfileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 897DD0052860A2C8006861A6 /* ProfileManager.swift */; };
+		897DD0082860A4A5006861A6 /* AccountSummaryViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 897DD0072860A4A5006861A6 /* AccountSummaryViewControllerTests.swift */; };
 		8999CBA628323C36004241A7 /* ShakeyBellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8999CBA528323C36004241A7 /* ShakeyBellView.swift */; };
 		89A0663727CF276D003365EF /* AccountSummaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89A0663627CF276D003365EF /* AccountSummaryViewController.swift */; };
 		89AA0CCC27F6473C0039CFCC /* NSNotificationName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89AA0CCB27F6473C0039CFCC /* NSNotificationName.swift */; };
@@ -54,6 +56,8 @@
 		895273D2285F62D0004F751A /* SkeletonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkeletonCell.swift; sourceTree = "<group>"; };
 		895C3B1527CE54F800DF1FA3 /* UIViewController+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Utils.swift"; sourceTree = "<group>"; };
 		895C3B1727CE56D200DF1FA3 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		897DD0052860A2C8006861A6 /* ProfileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileManager.swift; sourceTree = "<group>"; };
+		897DD0072860A4A5006861A6 /* AccountSummaryViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountSummaryViewControllerTests.swift; sourceTree = "<group>"; };
 		8999CBA528323C36004241A7 /* ShakeyBellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShakeyBellView.swift; sourceTree = "<group>"; };
 		89A0663627CF276D003365EF /* AccountSummaryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountSummaryViewController.swift; sourceTree = "<group>"; };
 		89AA0CCB27F6473C0039CFCC /* NSNotificationName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSNotificationName.swift; sourceTree = "<group>"; };
@@ -121,6 +125,14 @@
 			path = Utils;
 			sourceTree = "<group>";
 		};
+		897DD0042860A2B0006861A6 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				897DD0052860A2C8006861A6 /* ProfileManager.swift */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
 		8999CBA428323C19004241A7 /* Components */ = {
 			isa = PBXGroup;
 			children = (
@@ -136,6 +148,7 @@
 				89D73069285CE3D600CAEA36 /* AccountSummaryViewController+Networking.swift */,
 				89E5836627EA5ABF00AFDF2F /* Header */,
 				89E5836727EA5AD800AFDF2F /* Cells */,
+				897DD0042860A2B0006861A6 /* Networking */,
 			);
 			path = AccountSummary;
 			sourceTree = "<group>";
@@ -206,6 +219,7 @@
 			children = (
 				89C58D22285E2B9000F44859 /* ProfileTests.swift */,
 				89C58D24285E2C1100F44859 /* AccountTests.swift */,
+				897DD0072860A4A5006861A6 /* AccountSummaryViewControllerTests.swift */,
 			);
 			path = AccountSummary;
 			sourceTree = "<group>";
@@ -342,6 +356,7 @@
 				895C3B1627CE54F800DF1FA3 /* UIViewController+Utils.swift in Sources */,
 				895273D3285F62D0004F751A /* SkeletonCell.swift in Sources */,
 				89D73068285CDD3600CAEA36 /* Date+Utils.swift in Sources */,
+				897DD0062860A2C8006861A6 /* ProfileManager.swift in Sources */,
 				895C3B1827CE56D200DF1FA3 /* MainViewController.swift in Sources */,
 				89AE7F3427C7D30C00ED0CD6 /* LoginView.swift in Sources */,
 				89FAA55427D0967800D82AD5 /* AccountSummaryHeaderView.swift in Sources */,
@@ -370,6 +385,7 @@
 				89E4364127F0AF4D00952717 /* CurrencyFormatterTests.swift in Sources */,
 				89C58D25285E2C1100F44859 /* AccountTests.swift in Sources */,
 				89C58D23285E2B9000F44859 /* ProfileTests.swift in Sources */,
+				897DD0082860A4A5006861A6 /* AccountSummaryViewControllerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
